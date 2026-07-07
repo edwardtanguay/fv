@@ -756,8 +756,11 @@ PRPA: <phrase d'exemple au participe présent>`;
                         }
                         html += `
                             <div class="mobile-tense-row">
-                                <span class="mobile-tense-name" style="text-transform: none;">${t} - <span style="color: #bb86fc; font-weight: normal; text-transform: lowercase;">${fullName}</span></span>
-                                <span class="mobile-tense-val">${val}</span>
+                                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; background-color: rgba(187, 134, 252, 0.06); padding: 8px 12px; border-radius: 6px; box-sizing: border-box;">
+                                    <span class="mobile-tense-name" style="margin-bottom: 0;">${t}</span>
+                                    <span style="color: #bb86fc; font-size: 0.85em; font-weight: normal; font-style: italic; text-transform: lowercase;">${fullName}</span>
+                                </div>
+                                <span class="mobile-tense-val" style="padding-left: 12px; padding-right: 12px;">${val}</span>
                             </div>
                         `;
                     }

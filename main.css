@@ -390,13 +390,14 @@ body {
                 padding-bottom: 6px;
             }
             .mobile-tense-row {
+                padding: 6px 0;
+                margin-bottom: 12px;
                 display: flex;
                 flex-direction: column;
-                padding: 8px 0;
-                border-bottom: 1px solid #2c2c2c;
+                gap: 6px;
             }
             .mobile-tense-row:last-child {
-                border-bottom: none;
+                margin-bottom: 0;
             }
             .mobile-tense-name {
                 font-weight: bold;
