@@ -1,0 +1,321 @@
+body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+        body.loaded {
+            opacity: 1;
+        }
+        .sidebar {
+            width: 440px;
+            min-width: 440px;
+            flex-shrink: 0;
+            background-color: #1e1e1e;
+            border-right: 1px solid #333;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 40px;
+            overflow-y: auto;
+            background-color: #121212;
+        }
+        h1, h2, h3 {
+            color: #ffffff;
+        }
+        .sidebar-header {
+            background-color: transparent;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 1.25em;
+            margin-bottom: 15px;
+            transition: color 0.2s, background-color 0.2s;
+        }
+        .sidebar-header:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #64b5f6;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        a.nav-link {
+            color: #e0e0e0;
+            text-decoration: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            border-radius: 4px;
+            transition: color 0.2s, background-color 0.2s;
+        }
+        a.nav-link.main-group-link {
+            color: #90caf9;
+        }
+        a.nav-link.irregular-group-link {
+            color: #ffffff;
+        }
+        a.nav-link.irregular-group-link .group-num {
+            color: #cc7777;
+            background-color: rgba(204, 119, 119, 0.15);
+            position: relative;
+        }
+        a.nav-link.irregular-group-link:hover .group-num::after {
+            content: "irréguliers";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 9px;
+            color: #cc7777;
+            white-space: nowrap;
+            font-weight: normal;
+            line-height: 1;
+            margin-top: 2px;
+            pointer-events: none;
+        }
+        a.nav-link.irregular-group-link .highlight-unique,
+        a.nav-link.irregular-group-link [style*="font-weight: bold"],
+        a.nav-link.irregular-group-link strong,
+        a.nav-link.irregular-group-link b {
+            color: #fdd835 !important;
+        }
+        a.nav-link.regular-group-link {
+            color: #ffffff;
+        }
+        a.nav-link.regular-group-link .group-num {
+            color: #90caf9;
+            background-color: rgba(144, 202, 249, 0.15);
+            position: relative;
+        }
+        a.nav-link.regular-group-link:hover .group-num::after {
+            content: "réguliers";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 9px;
+            color: #90caf9;
+            white-space: nowrap;
+            font-weight: normal;
+            line-height: 1;
+            margin-top: 2px;
+            pointer-events: none;
+        }
+        a.nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        a.nav-link.active, .sidebar-header.active {
+            background-color: rgba(255, 255, 255, 0.12) !important;
+        }
+        .group-title {
+            display: inline-block;
+        }
+        .group-percentage {
+            font-size: 0.88em;
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.08);
+            padding: 2.5px 7px;
+            border-radius: 10px;
+            font-weight: normal;
+            flex-shrink: 0;
+        }
+        .group-percentage-sub {
+            font-size: 0.68em;
+            color: #ccc;
+            background-color: rgba(255, 255, 255, 0.08);
+            padding: 1.5px 5px;
+            border-radius: 8px;
+            font-weight: normal;
+            flex-shrink: 0;
+        }
+        .pct-container {
+            width: 55px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        a.nav-link.no-conjugations {
+            background-color: transparent;
+            font-weight: bold;
+        }
+        a.nav-link.no-conjugations .group-num {
+            background-color: transparent;
+            padding: 0;
+            margin-right: 4px;
+        }
+        .sub-nav {
+            padding-left: 15px;
+            font-size: 0.9em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        th {
+            background-color: #2c2c2c;
+            color: #fff;
+        }
+        .reg {
+            color: #ffffff;
+        }
+        .irreg {
+            color: #cc7777;
+        }
+        .irreg-part {
+            color: #cc7777; /* Softer, closer to gray */
+        }
+        .reg-part {
+            color: #ffffff;
+        }
+        .suffix {
+            color: #bbbbbb;
+        }
+        .card {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .tense-label {
+            font-weight: bold;
+            color: #bb86fc;
+            width: 200px;
+            display: inline-block;
+        }
+        .tense-text {
+            position: relative;
+            cursor: default;
+        }
+        .tense-tooltip {
+            visibility: hidden;
+            color: #bb86fc;
+            position: absolute;
+            z-index: 10;
+            left: 100%;
+            top: 0;
+            font-size: 1em;
+            font-weight: normal;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.2s, visibility 0.2s;
+            pointer-events: none;
+        }
+        .tense-text:hover .tense-tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .conjugation-row {
+            margin-bottom: 8px;
+            padding: 8px;
+            border-bottom: 1px solid #333;
+        }
+        .conjugation-row:last-child {
+            border-bottom: none;
+        }
+    
+        .group-num {
+            font-weight: bold;
+            color: #4dd0e1;
+            background-color: rgba(77, 208, 225, 0.15);
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 4px;
+        }
+        .group-num.main-num {
+            color: #90caf9;
+            background-color: rgba(144, 202, 249, 0.15);
+        }
+    
+        .highlight-unique {
+            color: #fdd835; /* Yellow */
+            font-weight: bold;
+        }
+        .verb-tab-btn:hover {
+            color: #fdd835 !important;
+        }
+        #active-verb-conjugation .card,
+        .active-verb-conjugation-wrapper .card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px 30px;
+        }
+        #active-verb-conjugation .conjugation-row,
+        .active-verb-conjugation-wrapper .conjugation-row {
+            margin-bottom: 0;
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
+        }
+        #active-verb-conjugation .conjugation-row:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+        #active-verb-conjugation .tense-label {
+            width: 80px;
+            padding-top: 2px;
+        }
+        #active-verb-conjugation .tooltip-dash {
+            display: none;
+        }
+        #active-verb-conjugation .tense-tooltip {
+            left: 0;
+            top: 100%;
+            font-size: 0.7em;
+            white-space: normal;
+            max-width: 80px;
+            line-height: 1.2;
+        }
+        .similar-verbs-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .similar-verb-item {
+            border: 1px solid #2a2a2a;
+            padding: 6px 10px;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.01);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+        .similar-verb-item:hover {
+            border-color: #555;
+            background-color: rgba(255, 255, 255, 0.07);
+        }
