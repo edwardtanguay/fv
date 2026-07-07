@@ -749,10 +749,15 @@ PRPA: <phrase d'exemple au participe présent>`;
                     const info = g.suffixes[t];
                     if (info) {
                         const fullName = tenseNames[t] || '';
+                        let val = info.val;
+                        if (t === 'PRPE') {
+                            // Wrap in span with same font/styling rules as the rest
+                            val = val.replace('ai ', '<span class="suffix" style="font-size: 1em;">ai/suis</span> ');
+                        }
                         html += `
                             <div class="mobile-tense-row">
-                                <span class="mobile-tense-name">${fullName} (${t})</span>
-                                <span class="mobile-tense-val">${info.val}</span>
+                                <span class="mobile-tense-name" style="text-transform: none;">${t} - <span style="color: #bb86fc; font-weight: normal; text-transform: lowercase;">${fullName}</span></span>
+                                <span class="mobile-tense-val">${val}</span>
                             </div>
                         `;
                     }
