@@ -309,6 +309,7 @@ const data = {"groups":[{"id":"g1","name":"<span class='group-num main-num'>1.</
             });
             renderNav();
             renderWelcomePage();
+            renderMobileView();
             document.getElementById('sidebar-title').onclick = (e) => {
                 renderWelcomePage();
                 setActive(e.currentTarget);
@@ -712,4 +713,66 @@ PRPA: <phrase d'exemple au participe présent>`;
                     </div>
                 </div>
             `;
+        }
+        
+        function renderMobileView() {
+            const container = document.getElementById('mobile-view');
+            if (!container) return;
+
+            const erSuffixes = getSuffixConjugations('aimer', 'g1', 'aim');
+            const irSuffixes = getSuffixConjugations('finir', 'g2', 'fin');
+            const reSuffixes = getSuffixConjugations('vendre', 'g3_1', 'vend');
+
+            const regularGroups = [
+                { title: 'verbes réguliers en -er', suffixes: erSuffixes },
+                { title: 'verbes réguliers en -ir', suffixes: irSuffixes },
+                { title: 'verbes réguliers en -re', suffixes: reSuffixes }
+            ];
+
+            const tensesOrder = ["PRES", "IMPE", "PRPE", "SIMP", "FUTU", "COND", "PRSU", "IMSU", "IPER", "PRPA"];
+
+            let html = `
+                <div class="mobile-title-container">
+                    <h1 class="mobile-title">Verbes Français</h1>
+                    <div class="mobile-subtitle">(see more projects by <a href="https://tanguay.info" target="_blank" rel="noopener noreferrer" style="color: #64b5f6; text-decoration: underline; font-weight: 600;">Edward</a>)</div>
+                    <div class="mobile-note">for full functionality of this app, view on desktop</div>
+                </div>
+                
+                <h2 class="mobile-section-title">Conjugaisons des verbes français</h2>
+            `;
+
+            regularGroups.forEach(g => {
+                html += `<div class="mobile-group-card">
+                    <div class="mobile-group-header">${g.title}</div>`;
+                
+                tensesOrder.forEach(t => {
+                    const info = g.suffixes[t];
+                    if (info) {
+                        const fullName = tenseNames[t] || '';
+                        html += `
+                            <div class="mobile-tense-row">
+                                <span class="mobile-tense-name">${fullName} (${t})</span>
+                                <span class="mobile-tense-val">${info.val}</span>
+                            </div>
+                        `;
+                    }
+                });
+                
+                html += `</div>`;
+            });
+
+            html += `<h2 class="mobile-section-title">Groupes de verbes français</h2>`;
+
+            data.groups.forEach(g => {
+                html += `<div class="mobile-verb-group-title">${g.name}</div>`;
+                if (g.subgroups) {
+                    html += `<ul class="mobile-verb-subgroup-list">`;
+                    g.subgroups.forEach(sg => {
+                        html += `<li>${sg.name}</li>`;
+                    });
+                    html += `</ul>`;
+                }
+            });
+
+            container.innerHTML = html;
         }

@@ -7,33 +7,37 @@
     <link rel="stylesheet" href="main.css?v=1.0.1">
 </head>
 <body>
-    <div class="sidebar">
-        <div style="text-align: center; margin-bottom: 20px; display: flex; flex-direction: column; align-items: center;">
-            <h2 id="sidebar-title" class="sidebar-header active" style="cursor: pointer; font-size: 1.8em; font-weight: bold; width: 100%; text-align: center; border-radius: 8px; margin-bottom: 8px; padding: 10px 0; margin-top: 0;">Verbes Français</h2>
-            <span class="back-link-wrapper" style="font-size: 0.9em; color: #bbbbbb; display: block;">(see more projects by <a href="https://tanguay.info" target="_blank" rel="noopener noreferrer" style="color: #64b5f6; text-decoration: underline; font-weight: 600;">Edward</a>)</span>
+    <div class="desktop-view">
+        <div class="sidebar">
+            <div style="text-align: center; margin-bottom: 20px; display: flex; flex-direction: column; align-items: center;">
+                <h2 id="sidebar-title" class="sidebar-header active" style="cursor: pointer; font-size: 1.8em; font-weight: bold; width: 100%; text-align: center; border-radius: 8px; margin-bottom: 8px; padding: 10px 0; margin-top: 0;">Verbes Français</h2>
+                <span class="back-link-wrapper" style="font-size: 0.9em; color: #bbbbbb; display: block;">(see more projects by <a href="https://tanguay.info" target="_blank" rel="noopener noreferrer" style="color: #64b5f6; text-decoration: underline; font-weight: 600;">Edward</a>)</span>
+            </div>
+            <ul id="nav-list"></ul>
         </div>
-        <ul id="nav-list"></ul>
-    </div>
-    <div class="content" id="main-content">
-        <h1>Conjugaisons des verbes français</h1>
-        <p>Sélectionnez un groupe dans la barre latérale pour voir les conjugaisons. Les temps réguliers sont affichés en blanc, et les temps irréguliers sont affichés en <span class="irreg">rouge</span>.</p>
-        
-        <h3 style="margin-top: 30px; margin-bottom: 15px;">Légende des temps :</h3>
-        <div class="card" style="max-width: 500px;">
-            <ul style="list-style: none; padding: 0; margin: 0; line-height: 2;">
-                <li><strong class="tense-label">PRES</strong> <span style="color: #bbbbbb;">— présent</span></li>
-                <li><strong class="tense-label">IMPE</strong> <span style="color: #bbbbbb;">— imparfait</span></li>
-                <li><strong class="tense-label">PRPE</strong> <span style="color: #bbbbbb;">— passé composé</span></li>
-                <li><strong class="tense-label">SIMP</strong> <span style="color: #bbbbbb;">— passé simple</span></li>
-                <li><strong class="tense-label">FUTU</strong> <span style="color: #bbbbbb;">— futur</span></li>
-                <li><strong class="tense-label">COND</strong> <span style="color: #bbbbbb;">— conditionnel</span></li>
-                <li><strong class="tense-label">PRSU</strong> <span style="color: #bbbbbb;">— présent du subjonctif</span></li>
-                <li><strong class="tense-label">IMSU</strong> <span style="color: #bbbbbb;">— imparfait du subjonctif</span></li>
-                <li><strong class="tense-label">IPER</strong> <span style="color: #bbbbbb;">— impératif</span></li>
-                <li><strong class="tense-label">PRPA</strong> <span style="color: #bbbbbb;">— participe présent</span></li>
-            </ul>
+        <div class="content" id="main-content">
+            <h1>Conjugaisons des verbes français</h1>
+            <p>Sélectionnez un groupe dans la barre latérale pour voir les conjugaisons. Les temps réguliers sont affichés en blanc, et les temps irréguliers sont affichés en <span class="irreg">rouge</span>.</p>
+            
+            <h3 style="margin-top: 30px; margin-bottom: 15px;">Légende des temps :</h3>
+            <div class="card" style="max-width: 500px;">
+                <ul style="list-style: none; padding: 0; margin: 0; line-height: 2;">
+                    <li><strong class="tense-label">PRES</strong> <span style="color: #bbbbbb;">— présent</span></li>
+                    <li><strong class="tense-label">IMPE</strong> <span style="color: #bbbbbb;">— imparfait</span></li>
+                    <li><strong class="tense-label">PRPE</strong> <span style="color: #bbbbbb;">— passé composé</span></li>
+                    <li><strong class="tense-label">SIMP</strong> <span style="color: #bbbbbb;">— passé simple</span></li>
+                    <li><strong class="tense-label">FUTU</strong> <span style="color: #bbbbbb;">— futur</span></li>
+                    <li><strong class="tense-label">COND</strong> <span style="color: #bbbbbb;">— conditionnel</span></li>
+                    <li><strong class="tense-label">PRSU</strong> <span style="color: #bbbbbb;">— présent du subjonctif</span></li>
+                    <li><strong class="tense-label">IMSU</strong> <span style="color: #bbbbbb;">— imparfait du subjonctif</span></li>
+                    <li><strong class="tense-label">IPER</strong> <span style="color: #bbbbbb;">— impératif</span></li>
+                    <li><strong class="tense-label">PRPA</strong> <span style="color: #bbbbbb;">— participe présent</span></li>
+                </ul>
+            </div>
         </div>
     </div>
+
+    <div class="mobile-view" id="mobile-view"></div>
 
     <script src="main.js"></script>
 </body>

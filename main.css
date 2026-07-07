@@ -1,15 +1,18 @@
 body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-            opacity: 0;
-            transition: opacity 0.5s ease-in;
-        }
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+.desktop-view {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
         body.loaded {
             opacity: 1;
         }
@@ -318,4 +321,120 @@ body {
         .similar-verb-item:hover {
             border-color: #555;
             background-color: rgba(255, 255, 255, 0.07);
+        }
+
+        /* Mobile View Media Queries */
+        @media (max-width: 768px) {
+            .desktop-view {
+                display: none !important;
+            }
+            .mobile-view {
+                display: block !important;
+                max-width: 382px;
+                margin: 0 auto;
+                padding: 16px;
+                box-sizing: border-box;
+                background-color: #121212;
+                color: #e0e0e0;
+            }
+            body {
+                overflow: auto !important;
+                height: auto !important;
+            }
+            .mobile-title-container {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .mobile-title {
+                font-size: 2em;
+                color: #ffffff;
+                margin: 0 0 6px 0;
+                font-weight: bold;
+            }
+            .mobile-subtitle {
+                font-size: 0.9em;
+                color: #bbbbbb;
+                margin-bottom: 12px;
+            }
+            .mobile-note {
+                font-size: 0.85em;
+                color: #e57373;
+                background-color: rgba(229, 115, 115, 0.1);
+                padding: 8px 12px;
+                border-radius: 6px;
+                border-left: 3px solid #e57373;
+                margin-bottom: 24px;
+                line-height: 1.4;
+            }
+            .mobile-section-title {
+                font-size: 1.35em;
+                border-bottom: 1px solid #333;
+                padding-bottom: 6px;
+                margin-top: 24px;
+                margin-bottom: 16px;
+                color: #90caf9;
+            }
+            .mobile-group-card {
+                background-color: #1e1e1e;
+                border-radius: 8px;
+                padding: 16px;
+                margin-bottom: 16px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            }
+            .mobile-group-header {
+                font-size: 1.15em;
+                font-weight: bold;
+                color: #fdd835;
+                margin-bottom: 12px;
+                border-bottom: 1px dashed #444;
+                padding-bottom: 6px;
+            }
+            .mobile-tense-row {
+                display: flex;
+                flex-direction: column;
+                padding: 8px 0;
+                border-bottom: 1px solid #2c2c2c;
+            }
+            .mobile-tense-row:last-child {
+                border-bottom: none;
+            }
+            .mobile-tense-name {
+                font-weight: bold;
+                color: #bb86fc;
+                font-size: 0.85em;
+                text-transform: uppercase;
+                margin-bottom: 3px;
+            }
+            .mobile-tense-val {
+                color: #ffffff;
+                font-size: 0.95em;
+                line-height: 1.4;
+                word-break: break-word;
+            }
+            .mobile-verb-group-title {
+                font-size: 1.1em;
+                font-weight: bold;
+                color: #90caf9;
+                margin-top: 14px;
+                margin-bottom: 6px;
+            }
+            .mobile-verb-subgroup-list {
+                list-style-type: none;
+                padding-left: 10px;
+                margin-bottom: 16px;
+            }
+            .mobile-verb-subgroup-list li {
+                font-size: 0.9em;
+                color: #cccccc;
+                margin-bottom: 6px;
+                line-height: 1.3;
+            }
+        }
+        @media (min-width: 769px) {
+            .desktop-view {
+                display: flex !important;
+            }
+            .mobile-view {
+                display: none !important;
+            }
         }
