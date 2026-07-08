@@ -287,14 +287,17 @@ body {
         #active-verb-conjugation .conjugation-row:nth-last-child(-n+2) {
             border-bottom: none;
         }
-        #active-verb-conjugation .tense-label {
+        #active-verb-conjugation .tense-label,
+        .active-verb-conjugation-wrapper .tense-label {
             width: 80px;
             padding-top: 2px;
         }
-        #active-verb-conjugation .tooltip-dash {
+        #active-verb-conjugation .tooltip-dash,
+        .active-verb-conjugation-wrapper .tooltip-dash {
             display: none;
         }
-        #active-verb-conjugation .tense-tooltip {
+        #active-verb-conjugation .tense-tooltip,
+        .active-verb-conjugation-wrapper .tense-tooltip {
             left: 0;
             top: 100%;
             font-size: 0.7em;
