@@ -452,3 +452,7 @@ body {
             color: #cc7777;
             background-color: rgba(204, 119, 119, 0.15);
         }
+
+        .sub-nav li {
+            margin-bottom: 4px;
+        }
