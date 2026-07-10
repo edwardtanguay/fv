@@ -501,23 +501,19 @@ body {
 
 /* Unified flexible stretching & scaling for active-verb cards */
 .overview-tables-container {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    min-height: min-content;
+    gap: clamp(4px, 0.8vh, 10px); /* Tighter gap to ensure all 3 tables fit on screen */
     margin-top: 5px;
 }
 .overview-tables-container > div {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    min-height: min-content;
 }
 .overview-tables-container h3 {
-    margin-top: 2px !important;
-    margin-bottom: 2px !important;
-    font-size: clamp(11px, 2vh, 20px) !important;
+    margin-top: clamp(4px, 0.8vh, 10px) !important;
+    margin-bottom: clamp(2px, 0.4vh, 6px) !important;
+    font-size: clamp(11px, 1.9vh, 20px) !important;
 }
 
 #active-verb-conjugation,
@@ -533,12 +529,12 @@ body {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
     align-items: start !important;
-    padding: 12px 15px !important;
+    padding: clamp(6px, 1vh, 12px) clamp(10px, 1.5vh, 15px) !important;
     margin-bottom: 0px !important;
     min-height: min-content !important;
     min-width: 660px !important;
     gap: 0px 20px !important;
-    font-size: clamp(9px, 1.7vh, 18px) !important;
+    font-size: clamp(9px, 1.65vh, 18px) !important;
 }
 
 #active-verb-conjugation .conjugation-row,
@@ -547,7 +543,7 @@ body {
     align-items: flex-start !important; /* Top-aligned abbreviation */
     box-sizing: border-box;
     margin-bottom: 0 !important;
-    padding: clamp(6px, 1.1vh, 12px) 0 !important; /* Equal row padding scaling with height */
+    padding: clamp(4px, 0.7vh, 8px) 0 !important; /* Equal row padding scaling with height */
     border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
@@ -559,8 +555,8 @@ body {
 #active-verb-conjugation .tense-label,
 .active-verb-conjugation-wrapper .tense-label {
     font-size: 1em !important;
-    width: 58px !important; /* Sweet-spot width for comfortable gap */
-    min-width: 58px !important;
+    width: 3.4em !important; /* Scales proportionally with font size to keep perfect spacing */
+    min-width: 3.4em !important;
     flex-shrink: 0;
     padding-top: 1px !important; /* Aligns abbreviation perfectly with first line of text */
 }
