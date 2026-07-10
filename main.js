@@ -363,7 +363,7 @@ const data = {"groups":[{"id":"g1","name":"<span class='group-num main-num'>1.</
                                 { name: 'bâtir', conjugations: generateConjugations('bâtir', 'g2') }
                             ];
                         }
-                        if (sg.id === 'g1_1' || sg.id === 'g2_1' || sg.id === 'g3_1') {
+                        if (sg.id === 'g1_1') {
                             sg.verbs = [
                                 { name: 'parler', conjugations: generateConjugations('parler', 'g1') },
                                 { name: 'aimer', conjugations: generateConjugations('aimer', 'g1') },
