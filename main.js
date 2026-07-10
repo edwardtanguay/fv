@@ -930,23 +930,23 @@ PRPA: <phrase d'exemple au participe présent>`;
             const reSuffixes = getSuffixConjugations('vendre', 'g3_1', 'vend');
 
             content.innerHTML = `
-                <h2 style="font-size: 1.35em; font-weight: bold; color: #ffffff; margin-bottom: 25px; margin-top: 10px;">Les verbes français sont basés sur trois tableaux de conjugaison :</h2>
+                <h2 style="font-size: 1.25em; font-weight: bold; color: #ffffff; margin-bottom: 6px; margin-top: 0px;">Les verbes français sont basés sur trois tableaux de conjugaison :</h2>
                 
-                <div style="display: flex; flex-direction: column; gap: 30px; margin-top: 25px;">
+                <div class="overview-tables-container">
                     <div>
-                        <h3 style="color: #90caf9; margin-bottom: 12px; font-size: 1.15em; font-weight: bold;">verbes réguliers en <span style="color: #fdd835; font-weight: bold;">-er</span></h3>
+                        <h3 style="color: #90caf9; margin-bottom: 2px; font-size: 1.05em; font-weight: bold;">verbes réguliers en <span style="color: #fdd835; font-weight: bold;">-er</span></h3>
                         <div class="active-verb-conjugation-wrapper">
                             ${renderConjugations(erSuffixes, null, false, false)}
                         </div>
                     </div>
                     <div>
-                        <h3 style="color: #90caf9; margin-bottom: 12px; font-size: 1.15em; font-weight: bold;">verbes réguliers en <span style="color: #fdd835; font-weight: bold;">-ir</span></h3>
+                        <h3 style="color: #90caf9; margin-bottom: 2px; font-size: 1.05em; font-weight: bold;">verbes réguliers en <span style="color: #fdd835; font-weight: bold;">-ir</span></h3>
                         <div class="active-verb-conjugation-wrapper">
                             ${renderConjugations(irSuffixes, null, false, false)}
                         </div>
                     </div>
                     <div>
-                        <h3 style="color: #90caf9; margin-bottom: 12px; font-size: 1.15em; font-weight: bold;">verbes réguliers en <span style="color: #fdd835; font-weight: bold;">-re</span></h3>
+                        <h3 style="color: #90caf9; margin-bottom: 2px; font-size: 1.05em; font-weight: bold;">verbes réguliers en <span style="color: #fdd835; font-weight: bold;">-re</span></h3>
                         <div class="active-verb-conjugation-wrapper">
                             ${renderConjugations(reSuffixes, null, false, false)}
                         </div>

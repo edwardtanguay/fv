@@ -463,3 +463,27 @@ body {
         .sub-nav .group-num {
             padding: 1px 4px;
         }
+
+        .overview-tables-container {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 5px;
+        }
+        .active-verb-conjugation-wrapper .conjugation-row {
+            padding: 4px 0 !important;
+        }
+
+        .active-verb-conjugation-wrapper .card {
+            padding: 8px 15px !important;
+            margin-bottom: 0px !important;
+            gap: 0px 20px !important;
+        }
+        .active-verb-conjugation-wrapper .conjugation-row {
+            padding: 2px 0 !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+        .overview-tables-container h3 {
+            margin-top: 2px !important;
+            margin-bottom: 2px !important;
+        }
