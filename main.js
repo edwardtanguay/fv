@@ -287,7 +287,7 @@ const data = {"groups":[{"id":"g1","name":"<span class='group-num main-num'>1.</
             const stemSimp = prefix + "qu";
             const stemReg = prefix + "ît";
             return {
-                "PRES": { "val": `${highlight(stemSing, 's', false)}, ${highlight(stemSing, 's', false)}, ${highlight(stemSing3, '', true)}, ${highlight(stemPlur, 'ons', true)}, ${highlight(stemPlur, 'ez', true)}, ${highlight(stemPlur, 'ent', true)}`, "base_rule": "-s, -s, -, -ons, -ez, -ent", "reg": true },
+                "PRES": { "val": `${highlight(stemSing, 's', true)}, ${highlight(stemSing, 's', true)}, ${highlight(stemSing3, '', false)}, ${highlight(stemPlur, 'ons', true)}, ${highlight(stemPlur, 'ez', true)}, ${highlight(stemPlur, 'ent', true)}`, "base_rule": "-s, -s, -, -ons, -ez, -ent", "reg": true },
                 "IMPE": { "val": `${highlight(stemPlur, 'ais', true)}, ${highlight(stemPlur, 'ais', true)}, ${highlight(stemPlur, 'ait', true)}, ${highlight(stemPlur, 'ions', true)}, ${highlight(stemPlur, 'iez', true)}, ${highlight(stemPlur, 'aient', true)}`, "base_rule": "-ais, -ais, -ait, -ions, -iez, -aient", "reg": true },
                 "PRPE": { "val": `suis <span class="irreg-part">né</span>`, "base_rule": "-u", "reg": true },
                 "SIMP": { "val": `${highlight(stemSimp, 'is', true)}, ${highlight(stemSimp, 'is', true)}, ${highlight(stemSimp, 'it', true)}, ${highlight(stemSimp, 'îmes', true)}, ${highlight(stemSimp, 'îtes', true)}, ${highlight(stemSimp, 'irent', true)}`, "base_rule": "-is, -is, -it, -îmes, -îtes, -irent", "reg": true },
