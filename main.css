@@ -76,7 +76,7 @@ body {
             color: #90caf9;
         }
         a.nav-link.irregular-group-link {
-            color: #ffffff;
+            color: #cc7777;
         }
         a.nav-link.irregular-group-link .group-num {
             color: #cc7777;
@@ -104,7 +104,7 @@ body {
             color: #fdd835 !important;
         }
         a.nav-link.regular-group-link {
-            color: #ffffff;
+            color: #90caf9;
         }
         a.nav-link.regular-group-link .group-num {
             color: #90caf9;
@@ -443,4 +443,29 @@ body {
             .mobile-view {
                 display: none !important;
             }
+        }
+        .main-group-header {
+            color: #ffffff;
+            opacity: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 8px 6px 8px;
+            font-size: 1.05em;
+            font-weight: bold;
+            font-variant: small-caps;
+            pointer-events: none;
+            user-select: none;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.35);
+        }
+        .main-group-header .pct-pill {
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: bold;
+            font-variant: normal;
+            color: #ffffff;
         }

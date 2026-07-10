@@ -363,7 +363,7 @@ const data = {"groups":[{"id":"g1","name":"<span class='group-num main-num'>1.</
                                 { name: 'bâtir', conjugations: generateConjugations('bâtir', 'g2') }
                             ];
                         }
-                        if (sg.id === 'g1_1') {
+                        if (sg.id === 'g1_1' || sg.id === 'g2_1' || sg.id === 'g3_1') {
                             sg.verbs = [
                                 { name: 'parler', conjugations: generateConjugations('parler', 'g1') },
                                 { name: 'aimer', conjugations: generateConjugations('aimer', 'g1') },
@@ -578,14 +578,17 @@ const data = {"groups":[{"id":"g1","name":"<span class='group-num main-num'>1.</
             };
             data.groups.forEach(g => {
                 const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.className = 'nav-link main-group-link';
-                if (!g.conjugations) {
-                    a.classList.add('no-conjugations');
-                }
-                a.innerHTML = `<span class="group-title">${g.name}</span><span class="pct-container">${pctHtml(g.id)}</span>`;
-                a.onclick = (e) => { renderGroup(g); setActive(e.currentTarget); };
-                li.appendChild(a);
+                const header = document.createElement('div');
+                header.className = 'main-group-header';
+                
+                let groupName = '';
+                let groupPct = '';
+                if (g.id === 'g1') { groupName = 'Premier groupe'; groupPct = '90%'; }
+                else if (g.id === 'g2') { groupName = 'Deuxième groupe'; groupPct = '3%'; }
+                else if (g.id === 'g3') { groupName = 'Troisième groupe'; groupPct = '7%'; }
+
+                header.innerHTML = `<span>${groupName}</span><span class="pct-pill">${groupPct}</span>`;
+                li.appendChild(header);
                 
                 if (g.subgroups) {
                     const subUl = document.createElement('ul');
@@ -599,7 +602,7 @@ const data = {"groups":[{"id":"g1","name":"<span class='group-num main-num'>1.</
                         } else {
                             subA.classList.add('irregular-group-link');
                         }
-                        subA.innerHTML = `<span class="group-title">${sg.name}</span><span class="pct-container">${pctHtml(sg.id)}</span>`;
+                        subA.innerHTML = `<span class="group-title">${sg.name}</span>`;
                         subA.onclick = (e) => { renderSubgroup(sg, g.name); setActive(e.currentTarget); };
                         subLi.appendChild(subA);
                         subUl.appendChild(subLi);
