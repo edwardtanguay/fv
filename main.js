@@ -722,7 +722,7 @@ PRPA: <phrase d'exemple au participe présent>`;
             for (const [tense, info] of Object.entries(conj)) {
                 const cls = info.reg ? 'reg' : 'irreg';
                 const fullName = tenseNames[tense] || '';
-                 html += `<div class="conjugation-row">
+                 html += `<div class="conjugation-row" data-tense="${tense}">
                             <span class="tense-label"><span class="tense-text">${tense}</span></span>
                             <div style="display: flex; flex-direction: column;">
                                 ${showVal && info.val ? `<span class="${cls}">${info.val}</span>` : ""}`;
@@ -734,7 +734,7 @@ PRPA: <phrase d'exemple au participe présent>`;
                 }
                 if (baseRule) {
                     const margin = (showVal && info.val) ? 'margin-top: 2px;' : 'margin-top: -2px;';
-                    html += `   <span class="base-rule-text" data-rule="${baseRule}" data-name="${fullName}" style="color: #bbbbbb; font-size: 0.9em; font-style: italic; ${margin}">${baseRule}</span>`;
+                    html += `   <span class="base-rule-text" data-rule="${baseRule}" data-name="${fullName}" data-group="${groupId}" style="color: #bbbbbb; font-size: 0.9em; font-style: italic; ${margin}">${baseRule}</span>`;
                 }
                 html += `   </div>
                          </div>`;
@@ -926,7 +926,47 @@ PRPA: <phrase d'exemple au participe présent>`;
             return res;
         }
 
-                function renderTenseLegend() {
+        
+        const tenseDiffHighlights = {
+            "g1": {
+                "PRES": "-<span class='diff-highlight'>e</span>, -<span class='diff-highlight'>es</span>, -<span class='diff-highlight'>e</span>, -ons, -ez, -ent",
+                "IMPE": "-ais, -ais, -ait, -ions, -iez, -aient",
+                "PRPE": "ai/suis -<span class='diff-highlight'>é</span>",
+                "SIMP": "-<span class='diff-highlight'>ai</span>, -<span class='diff-highlight'>as</span>, -<span class='diff-highlight'>a</span>, -<span class='diff-highlight'>âmes</span>, -<span class='diff-highlight'>âtes</span>, -<span class='diff-highlight'>èrent</span>",
+                "FUTU": "-<span class='diff-highlight'>er</span>ai, -<span class='diff-highlight'>er</span>as, -<span class='diff-highlight'>er</span>a, -<span class='diff-highlight'>er</span>ons, -<span class='diff-highlight'>er</span>ez, -<span class='diff-highlight'>er</span>ont",
+                "COND": "-<span class='diff-highlight'>er</span>ais, -<span class='diff-highlight'>er</span>ais, -<span class='diff-highlight'>er</span>ait, -<span class='diff-highlight'>er</span>ions, -<span class='diff-highlight'>er</span>iez, -<span class='diff-highlight'>er</span>aient",
+                "PRSU": "-e, -es, -e, -ions, -iez, -ent",
+                "IMSU": "-<span class='diff-highlight'>a</span>sse, -<span class='diff-highlight'>a</span>sses, -<span class='diff-highlight'>â</span>t, -<span class='diff-highlight'>a</span>ssions, -<span class='diff-highlight'>a</span>ssiez, -<span class='diff-highlight'>a</span>ssent",
+                "IPER": "-<span class='diff-highlight'>e</span>, -ons, -ez",
+                "PRPA": "-ant"
+            },
+            "g2": {
+                "PRES": "-<span class='diff-highlight'>is</span>, -<span class='diff-highlight'>is</span>, -<span class='diff-highlight'>it</span>, -<span class='diff-highlight'>iss</span>ons, -<span class='diff-highlight'>iss</span>ez, -<span class='diff-highlight'>iss</span>ent",
+                "IMPE": "-<span class='diff-highlight'>iss</span>ais, -<span class='diff-highlight'>iss</span>ais, -<span class='diff-highlight'>iss</span>ait, -<span class='diff-highlight'>iss</span>ions, -<span class='diff-highlight'>iss</span>iez, -<span class='diff-highlight'>iss</span>aient",
+                "PRPE": "ai/suis -<span class='diff-highlight'>i</span>",
+                "SIMP": "-<span class='diff-highlight'>is</span>, -<span class='diff-highlight'>is</span>, -<span class='diff-highlight'>it</span>, -<span class='diff-highlight'>îmes</span>, -<span class='diff-highlight'>îtes</span>, -<span class='diff-highlight'>irent</span>",
+                "FUTU": "-<span class='diff-highlight'>ir</span>ai, -<span class='diff-highlight'>ir</span>as, -<span class='diff-highlight'>ir</span>a, -<span class='diff-highlight'>ir</span>ons, -<span class='diff-highlight'>ir</span>ez, -<span class='diff-highlight'>ir</span>ont",
+                "COND": "-<span class='diff-highlight'>ir</span>ais, -<span class='diff-highlight'>ir</span>ais, -<span class='diff-highlight'>ir</span>ait, -<span class='diff-highlight'>ir</span>ions, -<span class='diff-highlight'>ir</span>iez, -<span class='diff-highlight'>ir</span>aient",
+                "PRSU": "-<span class='diff-highlight'>iss</span>e, -<span class='diff-highlight'>iss</span>es, -<span class='diff-highlight'>iss</span>e, -<span class='diff-highlight'>iss</span>ions, -<span class='diff-highlight'>iss</span>iez, -<span class='diff-highlight'>iss</span>ent",
+                "IMSU": "-<span class='diff-highlight'>i</span>sse, -<span class='diff-highlight'>i</span>sses, -<span class='diff-highlight'>î</span>t, -<span class='diff-highlight'>i</span>ssions, -<span class='diff-highlight'>i</span>ssiez, -<span class='diff-highlight'>i</span>ssent",
+                "IPER": "-<span class='diff-highlight'>is</span>, -<span class='diff-highlight'>iss</span>ons, -<span class='diff-highlight'>iss</span>ez",
+                "PRPA": "-<span class='diff-highlight'>iss</span>ant"
+            },
+            "g3_1": {
+                "PRES": "-<span class='diff-highlight'>s</span>, -<span class='diff-highlight'>s</span>, -<span class='diff-highlight'></span>, -ons, -ez, -ent",
+                "IMPE": "-ais, -ais, -ait, -ions, -iez, -aient",
+                "PRPE": "ai/suis -<span class='diff-highlight'>u</span>",
+                "SIMP": "-<span class='diff-highlight'>is</span>, -<span class='diff-highlight'>is</span>, -<span class='diff-highlight'>it</span>, -<span class='diff-highlight'>îmes</span>, -<span class='diff-highlight'>îtes</span>, -<span class='diff-highlight'>irent</span>",
+                "FUTU": "-<span class='diff-highlight'>r</span>ai, -<span class='diff-highlight'>r</span>as, -<span class='diff-highlight'>r</span>a, -<span class='diff-highlight'>r</span>ons, -<span class='diff-highlight'>r</span>ez, -<span class='diff-highlight'>r</span>ont",
+                "COND": "-<span class='diff-highlight'>r</span>ais, -<span class='diff-highlight'>r</span>as, -<span class='diff-highlight'>r</span>ait, -<span class='diff-highlight'>r</span>ions, -<span class='diff-highlight'>r</span>iez, -<span class='diff-highlight'>r</span>aient",
+                "PRSU": "-e, -es, -e, -ions, -iez, -ent",
+                "IMSU": "-<span class='diff-highlight'>i</span>sse, -<span class='diff-highlight'>i</span>sses, -<span class='diff-highlight'>î</span>t, -<span class='diff-highlight'>i</span>ssions, -<span class='diff-highlight'>i</span>ssiez, -<span class='diff-highlight'>i</span>ssent",
+                "IPER": "-<span class='diff-highlight'>s</span>, -ons, -ez",
+                "PRPA": "-ant"
+            }
+        };
+
+        function renderTenseLegend() {
             return `
                 <div class="tense-legend" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 40px; margin-top: 15px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.8em; max-width: 500px; margin-left: 2px;">
                     <div style="display: flex; flex-direction: column; gap: 4px;">
@@ -964,19 +1004,19 @@ PRPA: <phrase d'exemple au participe présent>`;
                     <div>
                         <h3 style="color: #90caf9; margin-bottom: 2px; font-size: 1.05em; font-weight: bold;">verbes réguliers en <span style="color: #fdd835; font-weight: bold;">-er</span></h3>
                         <div class="active-verb-conjugation-wrapper">
-                            ${renderConjugations(erSuffixes, null, false, false)}
+                            ${renderConjugations(erSuffixes, null, false, false, 'g1')}
                         </div>
                     </div>
                     <div>
                         <h3 style="color: #90caf9; margin-bottom: 2px; font-size: 1.05em; font-weight: bold;">verbes réguliers en <span style="color: #fdd835; font-weight: bold;">-ir</span></h3>
                         <div class="active-verb-conjugation-wrapper">
-                            ${renderConjugations(irSuffixes, null, false, false)}
+                            ${renderConjugations(irSuffixes, null, false, false, 'g2')}
                         </div>
                     </div>
                     <div>
                         <h3 style="color: #90caf9; margin-bottom: 2px; font-size: 1.05em; font-weight: bold;">verbes réguliers en <span style="color: #fdd835; font-weight: bold;">-re</span></h3>
                         <div class="active-verb-conjugation-wrapper">
-                            ${renderConjugations(reSuffixes, null, false, false)}
+                            ${renderConjugations(reSuffixes, null, false, false, 'g3_1')}
                         </div>
                     </div>
                 </div>
@@ -1064,6 +1104,45 @@ PRPA: <phrase d'exemple au participe présent>`;
             if (e.target.classList.contains('help-icon')) {
                 document.querySelectorAll('.base-rule-text').forEach(el => {
                     el.innerHTML = el.getAttribute('data-rule');
+                });
+            }
+        });
+
+        // Mouseover/mouseout hover listeners for tense comparisons on the welcome page
+        document.addEventListener('mouseover', (e) => {
+            const row = e.target.closest('.overview-tables-container .conjugation-row');
+            if (row) {
+                const hoveredTense = row.getAttribute('data-tense');
+                document.querySelectorAll('.overview-tables-container .conjugation-row').forEach(r => {
+                    const t = r.getAttribute('data-tense');
+                    if (t === hoveredTense) {
+                        r.classList.add('active-row-highlight');
+                        r.classList.remove('row-dimmed');
+                        
+                        const span = r.querySelector('.base-rule-text');
+                        if (span) {
+                            const group = span.getAttribute('data-group');
+                            if (group && tenseDiffHighlights[group] && tenseDiffHighlights[group][t]) {
+                                span.innerHTML = tenseDiffHighlights[group][t];
+                            }
+                        }
+                    } else {
+                        r.classList.add('row-dimmed');
+                        r.classList.remove('active-row-highlight');
+                    }
+                });
+            }
+        });
+
+        document.addEventListener('mouseout', (e) => {
+            const row = e.target.closest('.overview-tables-container .conjugation-row');
+            if (row) {
+                document.querySelectorAll('.overview-tables-container .conjugation-row').forEach(r => {
+                    r.classList.remove('row-dimmed', 'active-row-highlight');
+                    const span = r.querySelector('.base-rule-text');
+                    if (span) {
+                        span.innerHTML = span.getAttribute('data-rule');
+                    }
                 });
             }
         });

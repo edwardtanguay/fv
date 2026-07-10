@@ -639,3 +639,22 @@ body {
 .overview-tables-container .tense-label {
     padding-top: 0 !important;
 }
+
+/* Hover dimming and highlighting styles for overview comparisons */
+.overview-tables-container .conjugation-row {
+    transition: opacity 0.15s, background-color 0.15s;
+}
+.overview-tables-container .conjugation-row.row-dimmed {
+    opacity: 0.25 !important;
+}
+.overview-tables-container .conjugation-row.active-row-highlight {
+    background-color: rgba(144, 202, 249, 0.08) !important;
+    border-radius: 4px;
+}
+.diff-highlight {
+    background-color: rgba(255, 152, 0, 0.22) !important; /* Subtle translucent orange */
+    color: #ffa726 !important; /* Soft light orange text */
+    padding: 1px 0 !important; /* Removed horizontal padding to prevent spacing gaps in words */
+    border-radius: 1px;
+    font-weight: normal;
+}
