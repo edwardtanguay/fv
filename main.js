@@ -608,7 +608,7 @@ PRPA: <phrase d'exemple au participe présent>`;
             "PRPA": "participe&nbsp;présent"
         };
 
-        function renderConjugations(conj, verbName = null, showVal = true, alwaysShowTooltip = false) {
+        function renderConjugations(conj, verbName = null, showVal = true, alwaysShowTooltip = false, groupId = null) {
             if (!conj) return '';
             let html = '<div class="card">';
             if (verbName) {
@@ -633,9 +633,15 @@ PRPA: <phrase d'exemple au participe présent>`;
                             <span class="tense-label"><span class="tense-text">${tense}<span class="${alwaysShowTooltip ? 'tense-tooltip always-visible' : 'tense-tooltip'}"><span class="tooltip-dash">&nbsp;-&nbsp;</span>${fullName}</span></span></span>
                             <div style="display: flex; flex-direction: column;">
                                 ${showVal && info.val ? `<span class="${cls}">${info.val}</span>` : ""}`;
-                if (info.base_rule) {
+                let baseRule = info.base_rule;
+                if (tense === 'PRPE' && groupId) {
+                    if (groupId.startsWith('g1')) baseRule = '-é';
+                    else if (groupId.startsWith('g2')) baseRule = '-i';
+                    else if (groupId.startsWith('g3')) baseRule = '-u';
+                }
+                if (baseRule) {
                     const margin = (showVal && info.val) ? 'margin-top: 2px;' : 'margin-top: -2px;';
-                    html += `   <span style="color: #bbbbbb; font-size: 0.9em; ${margin}">${info.base_rule}</span>`;
+                    html += `   <span style="color: #bbbbbb; font-size: 0.9em; ${margin}">${baseRule}</span>`;
                 }
                 html += `   </div>
                          </div>`;
@@ -663,12 +669,12 @@ PRPA: <phrase d'exemple au participe présent>`;
                 html += `</div>`;
                 
                 html += `<div id="active-verb-conjugation">`;
-                html += renderConjugations(g.verbs[0].conjugations, g.verbs[0].name);
+                html += renderConjugations(g.verbs[0].conjugations, g.verbs[0].name, true, false, g.id);
                 html += `</div>`;
             } else if (g.conjugations) {
                 html += `<h3>Conjugaisons</h3>`;
                 html += `<div id="active-verb-conjugation">`;
-                html += renderConjugations(g.conjugations);
+                html += renderConjugations(g.conjugations, null, true, false, g.id);
                 html += `</div>`;
             }
             
@@ -732,12 +738,12 @@ PRPA: <phrase d'exemple au participe présent>`;
                 html += `</div>`;
                 
                 html += `<div id="active-verb-conjugation">`;
-                html += renderConjugations(sg.verbs[0].conjugations, sg.verbs[0].name);
+                html += renderConjugations(sg.verbs[0].conjugations, sg.verbs[0].name, true, false, sg.id);
                 html += `</div>`;
             } else if (sg.conjugations) {
                 html += `<h3>Conjugaisons</h3>`;
                 html += `<div id="active-verb-conjugation">`;
-                html += renderConjugations(sg.conjugations);
+                html += renderConjugations(sg.conjugations, null, true, false, sg.id);
                 html += `</div>`;
             }
             
@@ -789,7 +795,7 @@ PRPA: <phrase d'exemple au participe présent>`;
             btnElement.style.backgroundColor = 'rgba(253, 216, 53, 0.08)';
             btnElement.style.borderBottom = '2px solid transparent';
             
-            document.getElementById('active-verb-conjugation').innerHTML = renderConjugations(verb.conjugations, verb.name);
+            document.getElementById('active-verb-conjugation').innerHTML = renderConjugations(verb.conjugations, verb.name, true, false, groupId);
         }
 
                 function getSuffixConjugations(verbName, patternId, stemToReplace) {
@@ -808,7 +814,13 @@ PRPA: <phrase d'exemple au participe présent>`;
                 } else if (patternId === 'g3_1') {
                     val = val.replaceAll(`<span class="reg-part">vendr</span>`, `<span class="reg-part">-r</span>`);
                 }
-                res[tense] = { val: val, base_rule: info.base_rule, reg: info.reg };
+                let baseRule = info.base_rule;
+                if (tense === 'PRPE') {
+                    if (patternId.startsWith('g1')) baseRule = '-é';
+                    else if (patternId.startsWith('g2')) baseRule = '-i';
+                    else if (patternId.startsWith('g3')) baseRule = '-u';
+                }
+                res[tense] = { val: val, base_rule: baseRule, reg: info.reg };
             }
             return res;
         }
