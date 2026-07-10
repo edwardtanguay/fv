@@ -814,9 +814,13 @@ PRPA: <phrase d'exemple au participe présent>`;
 
         function renderSubgroup(sg, parentName) {
             const content = document.getElementById('main-content');
-            let html = `<h2>${sg.name}</h2>`;
+            const isRegular = (sg.id === 'g1_1' || sg.id === 'g2_1' || sg.id === 'g3_1');
+            const numClass = isRegular ? 'group-num regular-num' : 'group-num irregular-num';
+            let sgName = sg.name.replace("class='group-num'", `class='${numClass}'`);
+            let html = `<h2>${sgName}</h2>`;
             const desc = getSubgroupDescription(sg);
-            html += `<div style="background-color: rgba(255,255,255,0.03); padding: 12px 15px; border-radius: 6px; margin-bottom: 20px; border-left: 3px solid #90caf9; font-size: 0.95em;">`;
+            const borderColor = isRegular ? '#90caf9' : '#cc7777';
+            html += `<div style="background-color: rgba(255,255,255,0.03); padding: 12px 15px; border-radius: 6px; margin-bottom: 20px; border-left: 3px solid ${borderColor}; font-size: 0.95em;">`;
             html += `<div>${desc}</div>`;
             html += `</div>`;
             if (sg.examples && sg.id !== 'g3_2') html += `<p><strong>Exemples :</strong> ${formatExamples(sg.examples)}</p>`;

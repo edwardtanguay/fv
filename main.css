@@ -469,3 +469,12 @@ body {
             font-variant: normal;
             color: #ffffff;
         }
+
+        .group-num.regular-num {
+            color: #90caf9;
+            background-color: rgba(144, 202, 249, 0.15);
+        }
+        .group-num.irregular-num {
+            color: #cc7777;
+            background-color: rgba(204, 119, 119, 0.15);
+        }
