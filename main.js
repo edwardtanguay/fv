@@ -723,7 +723,7 @@ PRPA: <phrase d'exemple au participe présent>`;
                 const cls = info.reg ? 'reg' : 'irreg';
                 const fullName = tenseNames[tense] || '';
                  html += `<div class="conjugation-row">
-                            <span class="tense-label"><span class="tense-text">${tense}<span class="${alwaysShowTooltip ? 'tense-tooltip always-visible' : 'tense-tooltip'}"><span class="tooltip-dash">&nbsp;-&nbsp;</span>${fullName}</span></span></span>
+                            <span class="tense-label"><span class="tense-text">${tense}</span></span>
                             <div style="display: flex; flex-direction: column;">
                                 ${showVal && info.val ? `<span class="${cls}">${info.val}</span>` : ""}`;
                 let baseRule = info.base_rule;
@@ -734,7 +734,7 @@ PRPA: <phrase d'exemple au participe présent>`;
                 }
                 if (baseRule) {
                     const margin = (showVal && info.val) ? 'margin-top: 2px;' : 'margin-top: -2px;';
-                    html += `   <span style="color: #bbbbbb; font-size: 0.9em; font-style: italic; ${margin}">${baseRule}</span>`;
+                    html += `   <span class="base-rule-text" data-rule="${baseRule}" data-name="${fullName}" style="color: #bbbbbb; font-size: 0.9em; font-style: italic; ${margin}">${baseRule}</span>`;
                 }
                 html += `   </div>
                          </div>`;
@@ -817,7 +817,11 @@ PRPA: <phrase d'exemple au participe présent>`;
             const isRegular = (sg.id === 'g1_1' || sg.id === 'g2_1' || sg.id === 'g3_1');
             const numClass = isRegular ? 'group-num regular-num' : 'group-num irregular-num';
             let sgName = sg.name.replace("class='group-num'", `class='${numClass}'`);
-            let html = `<h2>${sgName}</h2>`;
+            let html = `
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h2 style="margin: 0;">${sgName}</h2>
+                <span class="help-icon" style="cursor: pointer; color: #ffffff; font-size: 1.1em; display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border: 2px solid #ffffff; border-radius: 50%; font-weight: normal; user-select: none; flex-shrink: 0;">?</span>
+            </div>`;
             const desc = getSubgroupDescription(sg);
             const borderColor = isRegular ? '#90caf9' : '#cc7777';
             html += `<div style="background-color: rgba(255,255,255,0.03); padding: 12px 15px; border-radius: 6px; margin-bottom: 20px; border-left: 3px solid ${borderColor}; font-size: 0.95em;">`;
@@ -922,6 +926,27 @@ PRPA: <phrase d'exemple au participe présent>`;
             return res;
         }
 
+                function renderTenseLegend() {
+            return `
+                <div class="tense-legend" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 40px; margin-top: 15px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.8em; max-width: 500px; margin-left: 2px;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <div style="display: flex; align-items: center;"><strong style="color: #bb86fc; width: 50px; display: inline-block;">PRES</strong><span style="color: #aaa;">présent</span></div>
+                        <div style="display: flex; align-items: center;"><strong style="color: #bb86fc; width: 50px; display: inline-block;">PRPE</strong><span style="color: #aaa;">participe passé</span></div>
+                        <div style="display: flex; align-items: center;"><strong style="color: #bb86fc; width: 50px; display: inline-block;">FUTU</strong><span style="color: #aaa;">futur simple</span></div>
+                        <div style="display: flex; align-items: center;"><strong style="color: #bb86fc; width: 50px; display: inline-block;">PRSU</strong><span style="color: #aaa;">subjonctif présent</span></div>
+                        <div style="display: flex; align-items: center;"><strong style="color: #bb86fc; width: 50px; display: inline-block;">IPER</strong><span style="color: #aaa;">impératif présent</span></div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <div style="display: flex; align-items: center;"><strong style="color: #bb86fc; width: 50px; display: inline-block;">IMPE</strong><span style="color: #aaa;">imparfait</span></div>
+                        <div style="display: flex; align-items: center;"><strong style="color: #bb86fc; width: 50px; display: inline-block;">SIMP</strong><span style="color: #aaa;">passé simple</span></div>
+                        <div style="display: flex; align-items: center;"><strong style="color: #bb86fc; width: 50px; display: inline-block;">COND</strong><span style="color: #aaa;">conditionnel présent</span></div>
+                        <div style="display: flex; align-items: center;"><strong style="color: #bb86fc; width: 50px; display: inline-block;">IMSU</strong><span style="color: #aaa;">subjonctif imparfait</span></div>
+                        <div style="display: flex; align-items: center;"><strong style="color: #bb86fc; width: 50px; display: inline-block;">PRPA</strong><span style="color: #aaa;">participe présent</span></div>
+                    </div>
+                </div>
+            `;
+        }
+
         function renderWelcomePage() {
             const content = document.getElementById('main-content');
             
@@ -930,7 +955,10 @@ PRPA: <phrase d'exemple au participe présent>`;
             const reSuffixes = getSuffixConjugations('vendre', 'g3_1', 'vend');
 
             content.innerHTML = `
-                <h2 style="font-size: 1.25em; font-weight: bold; color: #ffffff; margin-bottom: 6px; margin-top: 0px;">Les verbes français sont basés sur trois tableaux de conjugaison :</h2>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <h2 style="font-size: 1.2em; font-weight: bold; color: #ffffff; margin: 0; padding-right: 10px;">Les verbes français sont basés sur trois tableaux de conjugaison :</h2>
+                    <span class="help-icon" style="cursor: pointer; color: #ffffff; font-size: 1.1em; display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border: 2px solid #ffffff; border-radius: 50%; font-weight: normal; user-select: none; flex-shrink: 0;">?</span>
+                </div>
                 
                 <div class="overview-tables-container">
                     <div>
@@ -1024,3 +1052,18 @@ PRPA: <phrase d'exemple au participe présent>`;
 
             container.innerHTML = html;
         }
+
+        document.addEventListener('mouseover', (e) => {
+            if (e.target.classList.contains('help-icon')) {
+                document.querySelectorAll('.base-rule-text').forEach(el => {
+                    el.innerHTML = el.getAttribute('data-name');
+                });
+            }
+        });
+        document.addEventListener('mouseout', (e) => {
+            if (e.target.classList.contains('help-icon')) {
+                document.querySelectorAll('.base-rule-text').forEach(el => {
+                    el.innerHTML = el.getAttribute('data-rule');
+                });
+            }
+        });
