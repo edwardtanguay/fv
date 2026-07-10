@@ -731,7 +731,7 @@ PRPA: <phrase d'exemple au participe présent>`;
                 }
                 if (baseRule) {
                     const margin = (showVal && info.val) ? 'margin-top: 2px;' : 'margin-top: -2px;';
-                    html += `   <span style="color: #bbbbbb; font-size: 0.9em; ${margin}">${baseRule}</span>`;
+                    html += `   <span style="color: #bbbbbb; font-size: 0.9em; font-style: italic; ${margin}">${baseRule}</span>`;
                 }
                 html += `   </div>
                          </div>`;
@@ -969,7 +969,7 @@ PRPA: <phrase d'exemple au participe présent>`;
                 <div class="mobile-title-container">
                     <h1 class="mobile-title">Verbes Français</h1>
                     <div class="mobile-subtitle">(see more projects by <a href="https://tanguay.info" target="_blank" rel="noopener noreferrer" style="color: #64b5f6; text-decoration: underline; font-weight: 600;">Edward</a>)</div>
-                    <div class="mobile-note">for full functionality of this app, view on desktop</div>
+                    <div class="mobile-note">pour profiter de toutes les fonctionnalités de cette application, utilisez un ordinateur</div>
                 </div>
                 
                 <h2 class="mobile-section-title">Conjugaisons des verbes français</h2>
