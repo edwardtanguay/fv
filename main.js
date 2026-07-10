@@ -26,7 +26,7 @@ const data = {"groups":[{"id":"g1","name":"<span class='group-num main-num'>1.</
                 const stem = verb.slice(0, -2);
                 return {
                     "PRES": { "val": `${highlight(stem, 'is')}, ${highlight(stem, 'is')}, ${highlight(stem, 'it')}, ${highlight(stem + 'iss', 'ons')}, ${highlight(stem + 'iss', 'ez')}, ${highlight(stem + 'iss', 'ent')}`, "base_rule": "-is, -is, -it, -issons, -issez, -issent", "reg": true },
-                    "IMPE": { "val": `${highlight(stem + 'iss', 'ais')}, ${highlight(stem + 'iss', 'ais')}, ${highlight(stem + 'iss', 'ait')}, ${highlight(stem + 'iss', 'ions')}, ${highlight(stem + 'iss', 'iez')}, ${highlight(stem + 'iss', 'aient')}`, "base_rule": "-ais, -ais, -ait, -ions, -iez, -aient", "reg": true },
+                    "IMPE": { "val": `${highlight(stem, 'issais')}, ${highlight(stem, 'issais')}, ${highlight(stem, 'issait')}, ${highlight(stem, 'issions')}, ${highlight(stem, 'issiez')}, ${highlight(stem, 'issaient')}`, "base_rule": "-issais, -issais, -issait, -issions, -issiez, -issaient", "reg": true },
                     "PRPE": { "val": `ai ${highlight(stem, 'i')}`, "base_rule": "ai/suis -i", "reg": true },
                     "SIMP": { "val": `${highlight(stem, 'is')}, ${highlight(stem, 'is')}, ${highlight(stem, 'it')}, ${highlight(stem, 'îmes')}, ${highlight(stem, 'îtes')}, ${highlight(stem, 'irent')}`, "base_rule": "-is, -is, -it, -îmes, -îtes, -irent", "reg": true },
                     "FUTU": { "val": `${highlight(stem, 'irai')}, ${highlight(stem, 'iras')}, ${highlight(stem, 'ira')}, ${highlight(stem, 'irons')}, ${highlight(stem, 'irez')}, ${highlight(stem, 'iront')}`, "base_rule": "-irai, -iras, -ira, -irons, -irez, -iront", "reg": true },
