@@ -267,8 +267,8 @@ body {
         }
         #active-verb-conjugation .tense-label,
         .active-verb-conjugation-wrapper .tense-label {
-            width: 65px !important;
-            min-width: 65px !important;
+            width: 48px !important;
+            min-width: 48px !important;
             flex-shrink: 0;
             padding-top: 0;
         }
@@ -548,7 +548,7 @@ body {
         }
         .overview-tables-container .tense-label {
             font-size: 1em !important; /* let it inherit the card's font-size scale */
-            width: 65px !important;
-            min-width: 65px !important;
+            width: 48px !important;
+            min-width: 48px !important;
             flex-shrink: 0;
         }
