@@ -200,16 +200,16 @@ const data = {"groups":[{"id":"g1","name":"<span class='group-num main-num'>1.</
                 const sCls = isSuffixIrreg ? 'irreg-part' : 'suffix';
                 return `<span class="${rCls}">${s}</span><span class="${sCls}">${suf}</span>`;
             };
-            const prefix = verb.slice(0, -5);
-            const stemSing = prefix + "ou";
-            const stemPlur = prefix + "olv";
-            const stemPart = prefix + "ol";
-            const stemReg = prefix + "oud";
+            const prefix = verb.slice(0, -6); // "ré", "dis", "ab"
+            const stemSing = prefix + "sou";
+            const stemPlur = prefix + "solv";
+            const stemPart = prefix + "sol";
+            const stemReg = prefix + "soud";
 
             const isDefective = (verb === 'absoudre' || verb === 'dissoudre');
-            const prpeVal = isDefective ? `ai <span class="irreg-part">${prefix}us</span>` : `ai ${highlight(stemPart, 'u', true)}`;
-            const simpVal = isDefective ? `—` : `${highlight(stemPart, 'us', true)}, ${highlight(stemPart, 'us', true)}, ${highlight(stemPart, 'ut', true)}, ${highlight(stemPart, 'ûmes', true)}, ${highlight(stemPart, 'ûtes', true)}, ${highlight(stemPart, 'urent', true)}`;
-            const imsuVal = isDefective ? `—` : `${highlight(stemPart, 'usse', true)}, ${highlight(stemPart, 'usses', true)}, ${highlight(stemPart, 'ût', true)}, ${highlight(stemPart, 'ussions', true)}, ${highlight(stemPart, 'ussiez', true)}, ${highlight(stemPart, 'ussent', true)}`;
+            const prpeVal = isDefective ? `<span class="irreg-part">${prefix}sou<u>s</u></span>` : `${highlight(stemPart, 'u', true)}`;
+            const simpVal = isDefective ? `— <span style="font-size: 0.8em; color: #888; font-weight: normal;">(verbe défectif)</span>` : `${highlight(stemPart, 'us', true)}, ${highlight(stemPart, 'us', true)}, ${highlight(stemPart, 'ut', true)}, ${highlight(stemPart, 'ûmes', true)}, ${highlight(stemPart, 'ûtes', true)}, ${highlight(stemPart, 'urent', true)}`;
+            const imsuVal = isDefective ? `— <span style="font-size: 0.8em; color: #888; font-weight: normal;">(verbe défectif)</span>` : `${highlight(stemPart, 'usse', true)}, ${highlight(stemPart, 'usses', true)}, ${highlight(stemPart, 'ût', true)}, ${highlight(stemPart, 'ussions', true)}, ${highlight(stemPart, 'ussiez', true)}, ${highlight(stemPart, 'ussent', true)}`;
 
             return {
                 "PRES": { "val": `${highlight(stemSing, 's', true)}, ${highlight(stemSing, 's', true)}, ${highlight(stemSing, 't', true)}, ${highlight(stemPlur, 'ons', true)}, ${highlight(stemPlur, 'ez', true)}, ${highlight(stemPlur, 'ent', true)}`, "base_rule": "-s, -s, -t, -ons, -ez, -ent", "reg": true },
