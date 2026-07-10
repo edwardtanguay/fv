@@ -256,7 +256,7 @@ body {
             padding: 8px 0;
             border-bottom: 1px solid #333;
             display: flex;
-            align-items: flex-start;
+            align-items: center;
         }
         #active-verb-conjugation .conjugation-row:nth-last-child(-n+2) {
             border-bottom: none;
@@ -266,7 +266,7 @@ body {
             width: 80px;
             min-width: 80px;
             flex-shrink: 0;
-            padding-top: 2px;
+            padding-top: 0;
         }
         #active-verb-conjugation .tooltip-dash,
         .active-verb-conjugation-wrapper .tooltip-dash {
