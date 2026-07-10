@@ -83,20 +83,7 @@ body {
             background-color: rgba(204, 119, 119, 0.15);
             position: relative;
         }
-        a.nav-link.irregular-group-link:hover .group-num::after {
-            content: "irréguliers";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 9px;
-            color: #cc7777;
-            white-space: nowrap;
-            font-weight: normal;
-            line-height: 1;
-            margin-top: 2px;
-            pointer-events: none;
-        }
+
         a.nav-link.irregular-group-link .highlight-unique,
         a.nav-link.irregular-group-link [style*="font-weight: bold"],
         a.nav-link.irregular-group-link strong,
@@ -111,20 +98,7 @@ body {
             background-color: rgba(144, 202, 249, 0.15);
             position: relative;
         }
-        a.nav-link.regular-group-link:hover .group-num::after {
-            content: "réguliers";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 9px;
-            color: #90caf9;
-            white-space: nowrap;
-            font-weight: normal;
-            line-height: 1;
-            margin-top: 2px;
-            pointer-events: none;
-        }
+
         a.nav-link:hover {
             background-color: rgba(255, 255, 255, 0.05);
         }
