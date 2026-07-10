@@ -930,8 +930,7 @@ PRPA: <phrase d'exemple au participe présent>`;
             const reSuffixes = getSuffixConjugations('vendre', 'g3_1', 'vend');
 
             content.innerHTML = `
-                <h1>Conjugaisons des verbes français</h1>
-                <p>Les verbes français sont basés sur trois tableaux de conjugaison :</p>
+                <h2 style="font-size: 1.35em; font-weight: bold; color: #ffffff; margin-bottom: 25px; margin-top: 10px;">Les verbes français sont basés sur trois tableaux de conjugaison :</h2>
                 
                 <div style="display: flex; flex-direction: column; gap: 30px; margin-top: 25px;">
                     <div>
