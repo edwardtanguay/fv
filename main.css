@@ -635,6 +635,7 @@ body {
 /* Center-align abbreviations specifically on the overview page */
 .overview-tables-container .conjugation-row {
     align-items: center !important;
+    cursor: help !important; /* Cursor with question mark pointer */
 }
 .overview-tables-container .tense-label {
     padding-top: 0 !important;
@@ -652,9 +653,17 @@ body {
     border-radius: 4px;
 }
 .diff-highlight {
-    background-color: rgba(255, 152, 0, 0.22) !important; /* Subtle translucent orange */
-    color: #ffa726 !important; /* Soft light orange text */
+    background-color: rgba(244, 67, 54, 0.22) !important; /* Subtle translucent red */
+    color: #e57373 !important; /* Soft light red text */
     padding: 1px 0 !important; /* Removed horizontal padding to prevent spacing gaps in words */
+    border-radius: 1px;
+    font-weight: normal;
+}
+
+.similar-highlight {
+    background-color: rgba(76, 175, 80, 0.22) !important; /* Translucent green */
+    color: #81c784 !important; /* Soft light green text */
+    padding: 1px 0 !important;
     border-radius: 1px;
     font-weight: normal;
 }

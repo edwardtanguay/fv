@@ -929,40 +929,40 @@ PRPA: <phrase d'exemple au participe présent>`;
         
         const tenseDiffHighlights = {
             "g1": {
-                "PRES": "-<span class='diff-highlight'>e</span>, -<span class='diff-highlight'>es</span>, -<span class='diff-highlight'>e</span>, -ons, -ez, -ent",
-                "IMPE": "-ais, -ais, -ait, -ions, -iez, -aient",
+                "PRES": "-<span class='diff-highlight'>e</span>, -<span class='diff-highlight'>es</span>, -<span class='diff-highlight'>e</span>, -<span class='similar-highlight'>ons</span>, -<span class='similar-highlight'>ez</span>, -<span class='similar-highlight'>ent</span>",
+                "IMPE": "-<span class='similar-highlight'>ais</span>, -<span class='similar-highlight'>ais</span>, -<span class='similar-highlight'>ait</span>, -<span class='similar-highlight'>ions</span>, -<span class='similar-highlight'>iez</span>, -<span class='similar-highlight'>aient</span>",
                 "PRPE": "ai/suis -<span class='diff-highlight'>é</span>",
                 "SIMP": "-<span class='diff-highlight'>ai</span>, -<span class='diff-highlight'>as</span>, -<span class='diff-highlight'>a</span>, -<span class='diff-highlight'>âmes</span>, -<span class='diff-highlight'>âtes</span>, -<span class='diff-highlight'>èrent</span>",
                 "FUTU": "-<span class='diff-highlight'>er</span>ai, -<span class='diff-highlight'>er</span>as, -<span class='diff-highlight'>er</span>a, -<span class='diff-highlight'>er</span>ons, -<span class='diff-highlight'>er</span>ez, -<span class='diff-highlight'>er</span>ont",
                 "COND": "-<span class='diff-highlight'>er</span>ais, -<span class='diff-highlight'>er</span>ais, -<span class='diff-highlight'>er</span>ait, -<span class='diff-highlight'>er</span>ions, -<span class='diff-highlight'>er</span>iez, -<span class='diff-highlight'>er</span>aient",
-                "PRSU": "-e, -es, -e, -ions, -iez, -ent",
+                "PRSU": "-<span class='similar-highlight'>e</span>, -<span class='similar-highlight'>es</span>, -<span class='similar-highlight'>e</span>, -<span class='similar-highlight'>ions</span>, -<span class='similar-highlight'>iez</span>, -<span class='similar-highlight'>ent</span>",
                 "IMSU": "-<span class='diff-highlight'>a</span>sse, -<span class='diff-highlight'>a</span>sses, -<span class='diff-highlight'>â</span>t, -<span class='diff-highlight'>a</span>ssions, -<span class='diff-highlight'>a</span>ssiez, -<span class='diff-highlight'>a</span>ssent",
-                "IPER": "-<span class='diff-highlight'>e</span>, -ons, -ez",
-                "PRPA": "-ant"
+                "IPER": "-<span class='diff-highlight'>e</span>, -<span class='similar-highlight'>ons</span>, -<span class='similar-highlight'>ez</span>",
+                "PRPA": "-<span class='similar-highlight'>ant</span>"
             },
             "g2": {
                 "PRES": "-<span class='diff-highlight'>is</span>, -<span class='diff-highlight'>is</span>, -<span class='diff-highlight'>it</span>, -<span class='diff-highlight'>iss</span>ons, -<span class='diff-highlight'>iss</span>ez, -<span class='diff-highlight'>iss</span>ent",
                 "IMPE": "-<span class='diff-highlight'>iss</span>ais, -<span class='diff-highlight'>iss</span>ais, -<span class='diff-highlight'>iss</span>ait, -<span class='diff-highlight'>iss</span>ions, -<span class='diff-highlight'>iss</span>iez, -<span class='diff-highlight'>iss</span>aient",
                 "PRPE": "ai/suis -<span class='diff-highlight'>i</span>",
-                "SIMP": "-<span class='diff-highlight'>is</span>, -<span class='diff-highlight'>is</span>, -<span class='diff-highlight'>it</span>, -<span class='diff-highlight'>îmes</span>, -<span class='diff-highlight'>îtes</span>, -<span class='diff-highlight'>irent</span>",
+                "SIMP": "-<span class='similar-highlight'>is</span>, -<span class='similar-highlight'>is</span>, -<span class='similar-highlight'>it</span>, -<span class='similar-highlight'>îmes</span>, -<span class='similar-highlight'>îtes</span>, -<span class='similar-highlight'>irent</span>",
                 "FUTU": "-<span class='diff-highlight'>ir</span>ai, -<span class='diff-highlight'>ir</span>as, -<span class='diff-highlight'>ir</span>a, -<span class='diff-highlight'>ir</span>ons, -<span class='diff-highlight'>ir</span>ez, -<span class='diff-highlight'>ir</span>ont",
                 "COND": "-<span class='diff-highlight'>ir</span>ais, -<span class='diff-highlight'>ir</span>ais, -<span class='diff-highlight'>ir</span>ait, -<span class='diff-highlight'>ir</span>ions, -<span class='diff-highlight'>ir</span>iez, -<span class='diff-highlight'>ir</span>aient",
                 "PRSU": "-<span class='diff-highlight'>iss</span>e, -<span class='diff-highlight'>iss</span>es, -<span class='diff-highlight'>iss</span>e, -<span class='diff-highlight'>iss</span>ions, -<span class='diff-highlight'>iss</span>iez, -<span class='diff-highlight'>iss</span>ent",
-                "IMSU": "-<span class='diff-highlight'>i</span>sse, -<span class='diff-highlight'>i</span>sses, -<span class='diff-highlight'>î</span>t, -<span class='diff-highlight'>i</span>ssions, -<span class='diff-highlight'>i</span>ssiez, -<span class='diff-highlight'>i</span>ssent",
+                "IMSU": "-<span class='similar-highlight'>i</span>sse, -<span class='similar-highlight'>i</span>sses, -<span class='similar-highlight'>î</span>t, -<span class='similar-highlight'>i</span>ssions, -<span class='similar-highlight'>i</span>ssiez, -<span class='similar-highlight'>i</span>ssent",
                 "IPER": "-<span class='diff-highlight'>is</span>, -<span class='diff-highlight'>iss</span>ons, -<span class='diff-highlight'>iss</span>ez",
                 "PRPA": "-<span class='diff-highlight'>iss</span>ant"
             },
             "g3_1": {
-                "PRES": "-<span class='diff-highlight'>s</span>, -<span class='diff-highlight'>s</span>, -<span class='diff-highlight'></span>, -ons, -ez, -ent",
-                "IMPE": "-ais, -ais, -ait, -ions, -iez, -aient",
+                "PRES": "-<span class='diff-highlight'>s</span>, -<span class='diff-highlight'>s</span>, -<span class='diff-highlight'></span>, -<span class='similar-highlight'>ons</span>, -<span class='similar-highlight'>ez</span>, -<span class='similar-highlight'>ent</span>",
+                "IMPE": "-<span class='similar-highlight'>ais</span>, -<span class='similar-highlight'>ais</span>, -<span class='similar-highlight'>ait</span>, -<span class='similar-highlight'>ions</span>, -<span class='similar-highlight'>iez</span>, -<span class='similar-highlight'>aient</span>",
                 "PRPE": "ai/suis -<span class='diff-highlight'>u</span>",
-                "SIMP": "-<span class='diff-highlight'>is</span>, -<span class='diff-highlight'>is</span>, -<span class='diff-highlight'>it</span>, -<span class='diff-highlight'>îmes</span>, -<span class='diff-highlight'>îtes</span>, -<span class='diff-highlight'>irent</span>",
+                "SIMP": "-<span class='similar-highlight'>is</span>, -<span class='similar-highlight'>is</span>, -<span class='similar-highlight'>it</span>, -<span class='similar-highlight'>îmes</span>, -<span class='similar-highlight'>îtes</span>, -<span class='similar-highlight'>irent</span>",
                 "FUTU": "-<span class='diff-highlight'>r</span>ai, -<span class='diff-highlight'>r</span>as, -<span class='diff-highlight'>r</span>a, -<span class='diff-highlight'>r</span>ons, -<span class='diff-highlight'>r</span>ez, -<span class='diff-highlight'>r</span>ont",
-                "COND": "-<span class='diff-highlight'>r</span>ais, -<span class='diff-highlight'>r</span>as, -<span class='diff-highlight'>r</span>ait, -<span class='diff-highlight'>r</span>ions, -<span class='diff-highlight'>r</span>iez, -<span class='diff-highlight'>r</span>aient",
-                "PRSU": "-e, -es, -e, -ions, -iez, -ent",
-                "IMSU": "-<span class='diff-highlight'>i</span>sse, -<span class='diff-highlight'>i</span>sses, -<span class='diff-highlight'>î</span>t, -<span class='diff-highlight'>i</span>ssions, -<span class='diff-highlight'>i</span>ssiez, -<span class='diff-highlight'>i</span>ssent",
-                "IPER": "-<span class='diff-highlight'>s</span>, -ons, -ez",
-                "PRPA": "-ant"
+                "COND": "-<span class='diff-highlight'>r</span>ais, -<span class='diff-highlight'>r</span>ais, -<span class='diff-highlight'>r</span>ait, -<span class='diff-highlight'>r</span>ions, -<span class='diff-highlight'>r</span>iez, -<span class='diff-highlight'>r</span>aient",
+                "PRSU": "-<span class='similar-highlight'>e</span>, -<span class='similar-highlight'>es</span>, -<span class='similar-highlight'>e</span>, -<span class='similar-highlight'>ions</span>, -<span class='similar-highlight'>iez</span>, -<span class='similar-highlight'>ent</span>",
+                "IMSU": "-<span class='similar-highlight'>i</span>sse, -<span class='similar-highlight'>i</span>sses, -<span class='similar-highlight'>î</span>t, -<span class='similar-highlight'>i</span>ssions, -<span class='similar-highlight'>i</span>ssiez, -<span class='similar-highlight'>i</span>ssent",
+                "IPER": "-<span class='diff-highlight'>s</span>, -<span class='similar-highlight'>ons</span>, -<span class='similar-highlight'>ez</span>",
+                "PRPA": "-<span class='similar-highlight'>ant</span>"
             }
         };
 
