@@ -538,3 +538,14 @@ body {
         .overview-tables-container .conjugation-row:nth-last-child(-n+2) {
             border-bottom: none !important;
         }
+
+        /* Fluid font-scaling to prevent crunching on small heights */
+        .overview-tables-container .card {
+            font-size: clamp(9px, 1.7vh, 18px) !important;
+        }
+        .overview-tables-container h3 {
+            font-size: clamp(11px, 2vh, 22px) !important;
+        }
+        .overview-tables-container .tense-label {
+            font-size: 1em !important; /* let it inherit the card's font-size scale */
+        }
