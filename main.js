@@ -707,7 +707,7 @@ PRPA: <phrase d'exemple au participe présent>`;
             if (verbName) {
                 const reversoUrl = `https://conjugator.reverso.net/conjugation-french-verb-${verbName}.html`;
                 const lawlessUrl = getLawlessFrenchUrl(verbName);
-                html += `<div style="grid-column: 1 / -1; margin-bottom: 8px; font-size: 0.9em; display: flex; flex-direction: column; gap: 6px; color: #888;">`;
+                html += `<div style="grid-column: 1 / -1; margin-bottom: 8px; font-size: 0.9em; display: flex; flex-direction: column; gap: 6px; color: #888;" class="prompt-instructions">`;
                 html += `  <div style="display: flex; align-items: center;">`;
                 html += `    Vérification croisée de la conjugaison du verbe <span style="color: #fdd835; margin-left: 4px; margin-right: 4px;">${verbName}</span> : `;
                 html += `    <a href="${lawlessUrl}" target="_blank" style="text-decoration: none; margin-left: 6px; display: inline-flex; align-items: center; justify-content: center; vertical-align: middle; transition: opacity 0.2s; opacity: 0.65;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.65'"><img src="https://www.lawlessfrench.com/favicon.ico" width="16" height="16" style="display: block; border-radius: 3px;" /></a>`;
@@ -818,13 +818,13 @@ PRPA: <phrase d'exemple au participe présent>`;
             const numClass = isRegular ? 'group-num regular-num' : 'group-num irregular-num';
             let sgName = sg.name.replace("class='group-num'", `class='${numClass}'`);
             let html = `
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <div class="subgroup-header-container" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                 <h2 style="margin: 0;">${sgName}</h2>
                 <span class="help-icon" style="cursor: pointer; color: #ffffff; font-size: 1.1em; display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border: 2px solid #ffffff; border-radius: 50%; font-weight: normal; user-select: none; flex-shrink: 0;">?</span>
             </div>`;
             const desc = getSubgroupDescription(sg);
             const borderColor = isRegular ? '#90caf9' : '#cc7777';
-            html += `<div style="background-color: rgba(255,255,255,0.03); padding: 12px 15px; border-radius: 6px; margin-bottom: 20px; border-left: 3px solid ${borderColor}; font-size: 0.95em;">`;
+            html += `<div class="subgroup-description" style="background-color: rgba(255,255,255,0.03); padding: 12px 15px; border-radius: 6px; margin-bottom: 20px; border-left: 3px solid ${borderColor}; font-size: 0.95em;">`;
             html += `<div>${desc}</div>`;
             html += `</div>`;
             if (sg.examples && sg.id !== 'g3_2') html += `<p><strong>Exemples :</strong> ${formatExamples(sg.examples)}</p>`;

@@ -28,7 +28,7 @@ body {
         .content {
             flex-grow: 1;
             padding: 20px 40px 30px 40px; /* slightly smaller padding for better fit */
-            overflow-y: auto;
+            overflow: hidden; /* Changed from overflow-y: auto to force child card height-scaling */
             background-color: #121212;
             display: flex;
             flex-direction: column;
@@ -496,59 +496,135 @@ body {
             font-weight: bold !important;
         }
 
-        /* Dynamic stretching for welcome page tables */
-        .overview-tables-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            min-height: 0;
-        }
-        .overview-tables-container > div {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            min-height: 0;
-        }
-        .overview-tables-container .active-verb-conjugation-wrapper {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            min-height: 0;
-        }
-        .overview-tables-container .card {
-            flex: 1;
-            display: grid !important;
-            grid-template-columns: 1fr 1fr !important;
-            grid-template-rows: repeat(5, 1fr) !important;
-            align-items: center !important;
-            padding: 4px 15px !important;
-            margin-bottom: 0px !important;
-            min-height: 0;
-            gap: 0px 20px !important;
-        }
-        .overview-tables-container .conjugation-row {
-            height: 100%;
-            display: flex;
-            align-items: center;
-            box-sizing: border-box;
-            margin-bottom: 0 !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-        }
-        .overview-tables-container .conjugation-row:nth-last-child(-n+2) {
-            border-bottom: none !important;
-        }
+        
+        
 
-        /* Fluid font-scaling to prevent crunching on small heights */
-        .overview-tables-container .card {
-            font-size: clamp(9px, 1.7vh, 18px) !important;
-        }
-        .overview-tables-container h3 {
-            font-size: clamp(11px, 2vh, 22px) !important;
-        }
-        .overview-tables-container .tense-label {
-            font-size: 1em !important; /* let it inherit the card's font-size scale */
-            width: 48px !important;
-            min-width: 48px !important;
-            flex-shrink: 0;
-        }
+/* Unified flexible stretching & scaling for active-verb cards */
+.overview-tables-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 0;
+    margin-top: 5px;
+}
+.overview-tables-container > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+.overview-tables-container h3 {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+    font-size: clamp(11px, 2vh, 20px) !important;
+}
+
+#active-verb-conjugation,
+.active-verb-conjugation-wrapper {
+    /* Sized naturally based on content to allow equal row padding */
+    display: flex;
+    flex-direction: column;
+}
+
+#active-verb-conjugation .card,
+.active-verb-conjugation-wrapper .card {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    align-items: start !important;
+    padding: 12px 15px !important;
+    margin-bottom: 0px !important;
+    gap: 0px 20px !important;
+    font-size: clamp(9px, 1.7vh, 18px) !important;
+}
+
+#active-verb-conjugation .conjugation-row,
+.active-verb-conjugation-wrapper .conjugation-row {
+    display: flex;
+    align-items: flex-start !important; /* Top-aligned abbreviation */
+    box-sizing: border-box;
+    margin-bottom: 0 !important;
+    padding: clamp(6px, 1.1vh, 12px) 0 !important; /* Equal row padding scaling with height */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+#active-verb-conjugation .conjugation-row:nth-last-child(-n+2),
+.active-verb-conjugation-wrapper .conjugation-row:nth-last-child(-n+2) {
+    border-bottom: none !important;
+}
+
+#active-verb-conjugation .tense-label,
+.active-verb-conjugation-wrapper .tense-label {
+    font-size: 1em !important;
+    width: 58px !important; /* Sweet-spot width for comfortable gap */
+    min-width: 58px !important;
+    flex-shrink: 0;
+    padding-top: 1px !important; /* Aligns abbreviation perfectly with first line of text */
+}
+
+/* Scalable styling for around-table content */
+.subgroup-header-container {
+    margin-bottom: clamp(6px, 1.5vh, 15px) !important;
+}
+.subgroup-header-container h2 {
+    font-size: clamp(12px, 2.2vh, 22px) !important;
+    margin: 0 !important;
+}
+
+.subgroup-description {
+    padding: clamp(6px, 1vh, 12px) clamp(8px, 1.3vh, 15px) !important;
+    margin-bottom: clamp(6px, 1.5vh, 15px) !important;
+    font-size: clamp(9px, 1.5vh, 14px) !important;
+}
+
+.prompt-instructions {
+    margin-top: clamp(4px, 0.8vh, 10px) !important;
+    margin-bottom: clamp(4px, 0.8vh, 10px) !important;
+    font-size: clamp(8px, 1.4vh, 13px) !important;
+    gap: clamp(2px, 0.5vh, 6px) !important;
+}
+.prompt-instructions img,
+.prompt-instructions svg {
+    width: clamp(10px, 1.6vh, 16px) !important;
+    height: clamp(10px, 1.6vh, 16px) !important;
+}
+
+.similar-verbs-title {
+    margin-top: clamp(8px, 1.5vh, 20px) !important;
+    margin-bottom: clamp(4px, 0.8vh, 10px) !important;
+    font-size: clamp(10px, 1.7vh, 15px) !important;
+}
+
+/* Fluid dynamic scaling for tabs, icons, and list of verbs at the bottom */
+.verb-tab-btn {
+    font-size: clamp(9px, 1.6vh, 15px) !important;
+    padding: clamp(4px, 0.8vh, 8px) clamp(8px, 1.5vh, 16px) !important;
+}
+
+.help-icon {
+    width: clamp(16px, 2.2vh, 24px) !important;
+    height: clamp(16px, 2.2vh, 24px) !important;
+    font-size: clamp(9px, 1.5vh, 13px) !important;
+}
+
+.content svg {
+    width: clamp(12px, 1.8vh, 18px) !important;
+    height: clamp(12px, 1.8vh, 18px) !important;
+    vertical-align: middle;
+}
+
+.similar-verbs-grid {
+    gap: clamp(4px, 0.8vh, 8px) !important;
+    margin-top: clamp(6px, 1.2vh, 12px) !important;
+}
+
+.similar-verb-item {
+    font-size: clamp(9px, 1.5vh, 14px) !important;
+    padding: clamp(3px, 0.6vh, 6px) clamp(6px, 1vh, 10px) !important;
+    gap: clamp(6px, 1.2vh, 12px) !important;
+}
+.similar-verb-item img,
+.similar-verb-item svg {
+    width: clamp(10px, 1.6vh, 15px) !important;
+    height: clamp(10px, 1.6vh, 15px) !important;
+}
