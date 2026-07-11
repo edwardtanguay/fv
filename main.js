@@ -1078,17 +1078,40 @@ PRPA: <phrase d'exemple au participe présent>`;
             });
 
             html += `<h2 class="mobile-section-title">Groupes de verbes français</h2>`;
+            html += `<ul class="mobile-nav-list" style="list-style: none; padding: 0; margin: 0 0 40px 0;">`;
 
             data.groups.forEach(g => {
-                html += `<div class="mobile-verb-group-title">${g.name}</div>`;
+                let groupName = '';
+                let groupPct = '';
+                if (g.id === 'g1') { groupName = 'Premier groupe'; groupPct = '90%'; }
+                else if (g.id === 'g2') { groupName = 'Deuxième groupe'; groupPct = '3%'; }
+                else if (g.id === 'g3') { groupName = 'Troisième groupe'; groupPct = '7%'; }
+
+                html += `<li style="list-style-type: none; margin-bottom: 15px;">
+                    <div class="main-group-header" style="pointer-events: none; user-select: none;">
+                        <span>${groupName}</span>
+                        <span class="pct-pill">${groupPct}</span>
+                    </div>`;
+                
                 if (g.subgroups) {
-                    html += `<ul class="mobile-verb-subgroup-list">`;
+                    html += `<ul class="sub-nav" style="list-style: none; padding-left: 15px; margin: 0;">`;
                     g.subgroups.forEach(sg => {
-                        html += `<li>${sg.name}</li>`;
+                        const isRegular = (sg.id === 'g1_1' || sg.id === 'g2_1' || sg.id === 'g3_1');
+                        const linkClass = isRegular ? 'nav-link regular-group-link' : 'nav-link irregular-group-link';
+                        
+                        html += `
+                            <li style="list-style-type: none; margin-bottom: 5px;">
+                                <a class="${linkClass}" style="pointer-events: none; user-select: none;">
+                                    <span class="group-title">${sg.name}</span>
+                                </a>
+                            </li>
+                        `;
                     });
                     html += `</ul>`;
                 }
+                html += `</li>`;
             });
+            html += `</ul>`;
 
             container.innerHTML = html;
         }
