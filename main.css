@@ -541,7 +541,7 @@ body {
     min-height: min-content !important;
     min-width: 660px !important;
     gap: 0px 20px !important;
-    font-size: clamp(9px, 1.65vh, 18px) !important;
+    font-size: clamp(10px, 1.4vh + 0.4vw, 24px) !important;
 }
 
 #active-verb-conjugation .conjugation-row,
@@ -552,6 +552,7 @@ body {
     margin-bottom: 0 !important;
     padding: clamp(4px, 0.7vh, 8px) 0 !important; /* Equal row padding scaling with height */
     border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    white-space: nowrap !important; /* Prevent text wrapping within rows */
 }
 
 #active-verb-conjugation .conjugation-row:nth-last-child(-n+2),
