@@ -24,6 +24,7 @@ body {
             border-right: 1px solid #333;
             padding: 20px;
             overflow-y: auto;
+            overflow-x: hidden !important; /* Prevent horizontal scrolling */
         }
         .content {
             flex-grow: 1;
@@ -116,6 +117,7 @@ body {
             text-align: left !important;
             white-space: normal !important;
             width: 100%;
+            min-width: 0 !important; /* Allow flex shrinking for wrapping */
         }
         .group-percentage {
             font-size: 0.88em;
@@ -686,4 +688,16 @@ body {
 .resizer:hover,
 .resizer.resizing {
     background-color: #90caf9 !important; /* Accent blue hover */
+}
+
+/* Navigation Text Wrapping */
+.nav-text {
+    min-width: 0 !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+}
+
+/* Allow highlight spans to wrap normally in sidebar */
+.sidebar .highlight-unique {
+    white-space: normal !important;
 }
