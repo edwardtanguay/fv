@@ -554,7 +554,6 @@ body {
     margin-bottom: 0 !important;
     padding: clamp(4px, 0.7vh, 8px) 0 !important; /* Equal row padding scaling with height */
     border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-    white-space: nowrap !important; /* Prevent text wrapping within rows */
 }
 
 #active-verb-conjugation .conjugation-row:nth-last-child(-n+2),
@@ -700,4 +699,12 @@ body {
 /* Allow highlight spans to wrap normally in sidebar */
 .sidebar .highlight-unique {
     white-space: normal !important;
+}
+
+/* Wrap conjugation value lists within grid columns */
+#active-verb-conjugation .conjugation-row > div,
+.active-verb-conjugation-wrapper .conjugation-row > div {
+    min-width: 0 !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
 }
