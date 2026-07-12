@@ -1105,7 +1105,7 @@ window.switchMobileSubcard = function(group) {
             if (!cardEr || !cardIr || !cardRe || !btnEr || !btnIr || !btnRe) return;
 
             const activeStyle = 'background-color: rgba(253, 216, 53, 0.12); color: #fdd835; border: 1px solid #fdd835;';
-            const inactiveStyle = 'background-color: rgba(255, 255, 255, 0.05); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2);';
+            const inactiveStyle = 'background-color: rgba(253, 216, 53, 0.04); color: rgba(253, 216, 53, 0.7); border: 1px solid rgba(253, 216, 53, 0.3);';
 
             cardEr.style.display = group === 'er' ? 'block' : 'none';
             cardIr.style.display = group === 'ir' ? 'block' : 'none';
