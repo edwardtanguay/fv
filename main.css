@@ -733,3 +733,13 @@ body {
     font-weight: normal !important;
     letter-spacing: 0.03em !important;
 }
+
+/* Remove unpleasant blue tap highlight / flashing overlay on mobile browsers */
+button,
+a,
+.mobile-tense-row div,
+[onclick] {
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    outline: none !important;
+}

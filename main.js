@@ -1114,6 +1114,31 @@ window.switchMobileSubcard = function(group) {
             btnEr.style.cssText = 'flex: 1; border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s; ' + (group === 'er' ? activeStyle : inactiveStyle);
             btnIr.style.cssText = 'flex: 1; border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s; ' + (group === 'ir' ? activeStyle : inactiveStyle);
             btnRe.style.cssText = 'flex: 1; border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s; ' + (group === 're' ? activeStyle : inactiveStyle);
+
+            // Dynamically show a new random verb for the selected group (over 30 verbs each)
+            const erVerbs = ['aimer', 'adorer', 'chanter', 'danser', 'donner', 'regarder', 'écouter', 'travailler', 'habiter', 'chercher', 'trouver', 'penser', 'demander', 'passer', 'arriver', 'étudier', 'jouer', 'porter', 'monter', 'rester', 'tomber', 'fermer', 'marcher', 'laisser', 'préparer', 'visiter', 'dessiner', 'voyager', 'saluer', 'pleurer', 'sauter', 'laver'];
+            const irVerbs = ['finir', 'choisir', 'réussir', 'bâtir', 'grandir', 'grossir', 'rougir', 'blanchir', 'obéir', 'réfléchir', 'punir', 'remplir', 'guérir', 'agir', 'réagir', 'établir', 'fournir', 'vieillir', 'salir', 'trahir', 'définir', 'avertir', 'nourrir', 'applaudir', 'mincir', 'accomplir', 'saisir', 'bénir', 'fleurir', 'investir', 'ralentir'];
+            const reVerbs = ['vendre', 'rendre', 'perdre', 'attendre', 'entendre', 'répondre', 'descendre', 'défendre', 'confondre', 'correspondre', 'prétendre', 'tendre', 'suspendre', 'fondre', 'mordre', 'tordre', 'détendre', 'dépendre', 'tondre', 'fendre', 'pendre', 'revendre', 'rependre', 'retendre', 'refendre', 'morfondre', 'épandre', 'descendre', 'perdre', 'attendre'];
+
+            let verbList = erVerbs;
+            if (group === 'ir') verbList = irVerbs;
+            else if (group === 're') verbList = reVerbs;
+
+            // Guarantee a unique list of over 30 verbs
+            const uniqueVerbs = Array.from(new Set(verbList));
+            const randomVerb = uniqueVerbs[Math.floor(Math.random() * uniqueVerbs.length)];
+            
+            const verbSpan = document.getElementById('mobile-random-verb-name');
+            const linkLawless = document.getElementById('mobile-link-lawless');
+            const linkReverso = document.getElementById('mobile-link-reverso');
+            const linkAi = document.getElementById('mobile-link-ai');
+            
+            if (verbSpan && linkLawless && linkReverso && linkAi) {
+                verbSpan.textContent = randomVerb;
+                linkLawless.href = getLawlessFrenchUrl(randomVerb);
+                linkReverso.href = `https://conjugator.reverso.net/conjugation-french-verb-${randomVerb}.html`;
+                linkAi.onclick = () => copyAIPrompt(randomVerb);
+            }
         };
 
         window.toggleMobileTenseNames = function() {
@@ -1185,11 +1210,21 @@ window.switchMobileSubcard = function(group) {
 
             // 2. Conjugaisons section
             let conjugationsHtml = `
-                <div style="font-size: 1.1em; font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                <div style="font-size: 1.1em; font-weight: bold; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
                     <span style="color: #90caf9; flex-shrink: 0;">verbes réguliers en</span>
                     <button id="btn-mobile-card-er" onclick="switchMobileSubcard('er')" style="flex: 1; border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s;">-er</button>
                     <button id="btn-mobile-card-ir" onclick="switchMobileSubcard('ir')" style="flex: 1; border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s;">-ir</button>
                     <button id="btn-mobile-card-re" onclick="switchMobileSubcard('re')" style="flex: 1; border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s;">-re</button>
+                </div>
+                
+                <!-- Random Verb Banner with External and AI Copy Buttons -->
+                <div id="mobile-random-verb-container" style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px; font-size: 1.05em; min-height: 28px; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 8px;">
+                    <span id="mobile-random-verb-name" style="font-weight: bold; color: #fdd835; font-size: 1.1em;"></span>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <a id="mobile-link-lawless" href="#" target="_blank" style="-webkit-tap-highlight-color: transparent !important; display: inline-flex; align-items: center; justify-content: center; opacity: 0.7; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'"><img src="https://www.lawlessfrench.com/favicon.ico" width="16" height="16" style="border-radius: 3px;" /></a>
+                        <a id="mobile-link-reverso" href="#" target="_blank" style="-webkit-tap-highlight-color: transparent !important; display: inline-flex; align-items: center; justify-content: center; opacity: 0.7; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'"><img src="https://cdn.reverso.net/conj/v2550/IMG/ReversoFavicon.ico" width="16" height="16" style="border-radius: 2px;" /></a>
+                        <a id="mobile-link-ai" href="javascript:void(0)" style="-webkit-tap-highlight-color: transparent !important; display: inline-flex; align-items: center; justify-content: center; opacity: 0.7; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'"><svg viewBox="0 0 16 16" width="16" height="16" style="display: block;"><rect x="0" y="0" width="16" height="16" rx="3" fill="#ffffff"/><text x="8" y="8" dominant-baseline="central" text-anchor="middle" font-family='Inter', 'Outfit', system-ui, sans-serif" font-weight="800" font-size="7.5" fill="#1a1a1a" letter-spacing="0.3px">AI</text></svg></a>
+                    </div>
                 </div>
             `;
             
