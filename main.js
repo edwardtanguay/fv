@@ -980,7 +980,7 @@ PRPA: <phrase d'exemple au participe présent>`;
             "g1": {
                 "PRES": "-<span class='diff-highlight'>e</span>, -<span class='diff-highlight'>es</span>, -<span class='diff-highlight'>e</span>, -<span class='similar-highlight'>ons</span>, -<span class='similar-highlight'>ez</span>, -<span class='similar-highlight'>ent</span>",
                 "IMPE": "-<span class='similar-highlight'>ais</span>, -<span class='similar-highlight'>ais</span>, -<span class='similar-highlight'>ait</span>, -<span class='similar-highlight'>ions</span>, -<span class='similar-highlight'>iez</span>, -<span class='similar-highlight'>aient</span>",
-                "PRPE": "ai/suis -<span class='diff-highlight'>é</span>",
+                "PRPE": "-<span class='diff-highlight'>é</span>",
                 "SIMP": "-<span class='diff-highlight'>ai</span>, -<span class='diff-highlight'>as</span>, -<span class='diff-highlight'>a</span>, -<span class='diff-highlight'>âmes</span>, -<span class='diff-highlight'>âtes</span>, -<span class='diff-highlight'>èrent</span>",
                 "FUTU": "-<span class='diff-highlight'>er</span>ai, -<span class='diff-highlight'>er</span>as, -<span class='diff-highlight'>er</span>a, -<span class='diff-highlight'>er</span>ons, -<span class='diff-highlight'>er</span>ez, -<span class='diff-highlight'>er</span>ont",
                 "COND": "-<span class='diff-highlight'>er</span>ais, -<span class='diff-highlight'>er</span>ais, -<span class='diff-highlight'>er</span>ait, -<span class='diff-highlight'>er</span>ions, -<span class='diff-highlight'>er</span>iez, -<span class='diff-highlight'>er</span>aient",
@@ -992,7 +992,7 @@ PRPA: <phrase d'exemple au participe présent>`;
             "g2": {
                 "PRES": "-<span class='diff-highlight'>is</span>, -<span class='diff-highlight'>is</span>, -<span class='diff-highlight'>it</span>, -<span class='diff-highlight'>iss</span>ons, -<span class='diff-highlight'>iss</span>ez, -<span class='diff-highlight'>iss</span>ent",
                 "IMPE": "-<span class='diff-highlight'>iss</span>ais, -<span class='diff-highlight'>iss</span>ais, -<span class='diff-highlight'>iss</span>ait, -<span class='diff-highlight'>iss</span>ions, -<span class='diff-highlight'>iss</span>iez, -<span class='diff-highlight'>iss</span>aient",
-                "PRPE": "ai/suis -<span class='diff-highlight'>i</span>",
+                "PRPE": "-<span class='diff-highlight'>i</span>",
                 "SIMP": "-<span class='similar-highlight'>is</span>, -<span class='similar-highlight'>is</span>, -<span class='similar-highlight'>it</span>, -<span class='similar-highlight'>îmes</span>, -<span class='similar-highlight'>îtes</span>, -<span class='similar-highlight'>irent</span>",
                 "FUTU": "-<span class='diff-highlight'>ir</span>ai, -<span class='diff-highlight'>ir</span>as, -<span class='diff-highlight'>ir</span>a, -<span class='diff-highlight'>ir</span>ons, -<span class='diff-highlight'>ir</span>ez, -<span class='diff-highlight'>ir</span>ont",
                 "COND": "-<span class='diff-highlight'>ir</span>ais, -<span class='diff-highlight'>ir</span>ais, -<span class='diff-highlight'>ir</span>ait, -<span class='diff-highlight'>ir</span>ions, -<span class='diff-highlight'>ir</span>iez, -<span class='diff-highlight'>ir</span>aient",
@@ -1004,7 +1004,7 @@ PRPA: <phrase d'exemple au participe présent>`;
             "g3_1": {
                 "PRES": "-<span class='diff-highlight'>s</span>, -<span class='diff-highlight'>s</span>, -<span class='diff-highlight'></span>, -<span class='similar-highlight'>ons</span>, -<span class='similar-highlight'>ez</span>, -<span class='similar-highlight'>ent</span>",
                 "IMPE": "-<span class='similar-highlight'>ais</span>, -<span class='similar-highlight'>ais</span>, -<span class='similar-highlight'>ait</span>, -<span class='similar-highlight'>ions</span>, -<span class='similar-highlight'>iez</span>, -<span class='similar-highlight'>aient</span>",
-                "PRPE": "ai/suis -<span class='diff-highlight'>u</span>",
+                "PRPE": "-<span class='diff-highlight'>u</span>",
                 "SIMP": "-<span class='similar-highlight'>is</span>, -<span class='similar-highlight'>is</span>, -<span class='similar-highlight'>it</span>, -<span class='similar-highlight'>îmes</span>, -<span class='similar-highlight'>îtes</span>, -<span class='similar-highlight'>irent</span>",
                 "FUTU": "-<span class='diff-highlight'>r</span>ai, -<span class='diff-highlight'>r</span>as, -<span class='diff-highlight'>r</span>a, -<span class='diff-highlight'>r</span>ons, -<span class='diff-highlight'>r</span>ez, -<span class='diff-highlight'>r</span>ont",
                 "COND": "-<span class='diff-highlight'>r</span>ais, -<span class='diff-highlight'>r</span>ais, -<span class='diff-highlight'>r</span>ait, -<span class='diff-highlight'>r</span>ions, -<span class='diff-highlight'>r</span>iez, -<span class='diff-highlight'>r</span>aient",
