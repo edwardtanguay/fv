@@ -1072,6 +1072,29 @@ PRPA: <phrase d'exemple au participe présent>`;
             `;
         }
         
+        window.switchMobileTab = function(tab) {
+            const groupsDiv = document.getElementById('mobile-section-groups');
+            const conjDiv = document.getElementById('mobile-section-conjugations');
+            const btnGroups = document.getElementById('btn-mobile-groups');
+            const btnConj = document.getElementById('btn-mobile-conjugations');
+            if (!groupsDiv || !conjDiv || !btnGroups || !btnConj) return;
+
+            const activeStyle = 'background-color: rgba(253, 216, 53, 0.12); color: #fdd835; border: 1px solid #fdd835;';
+            const inactiveStyle = 'background-color: rgba(255, 255, 255, 0.05); color: #bbbbbb; border: 1px solid transparent;';
+
+            if (tab === 'groups') {
+                groupsDiv.style.display = 'block';
+                conjDiv.style.display = 'none';
+                btnGroups.style.cssText = 'flex: 1; border: none; padding: 10px 6px; font-size: 0.9em; font-weight: bold; border-radius: 4px; cursor: pointer; transition: all 0.2s; ' + activeStyle;
+                btnConj.style.cssText = 'flex: 1; border: none; padding: 10px 6px; font-size: 0.9em; font-weight: bold; border-radius: 4px; cursor: pointer; transition: all 0.2s; ' + inactiveStyle;
+            } else {
+                groupsDiv.style.display = 'none';
+                conjDiv.style.display = 'block';
+                btnGroups.style.cssText = 'flex: 1; border: none; padding: 10px 6px; font-size: 0.9em; font-weight: bold; border-radius: 4px; cursor: pointer; transition: all 0.2s; ' + inactiveStyle;
+                btnConj.style.cssText = 'flex: 1; border: none; padding: 10px 6px; font-size: 0.9em; font-weight: bold; border-radius: 4px; cursor: pointer; transition: all 0.2s; ' + activeStyle;
+            }
+        };
+
         function renderMobileView() {
             const container = document.getElementById('mobile-view');
             if (!container) return;
@@ -1095,10 +1118,8 @@ PRPA: <phrase d'exemple au participe présent>`;
                 </div>
             `;
 
-            // Render "Groupes de verbes français" section first
-            html += `<h2 class="mobile-section-title">Groupes de verbes français</h2>`;
-            html += `<ul class="mobile-nav-list" style="list-style: none; padding: 0; margin: 0 0 40px 0;">`;
-
+            // 1. Groupes de verbes section
+            let groupsHtml = `<ul class="mobile-nav-list" style="list-style: none; padding: 0; margin: 0 0 40px 0;">`;
             data.groups.forEach(g => {
                 let groupName = '';
                 let groupPct = '';
@@ -1106,19 +1127,19 @@ PRPA: <phrase d'exemple au participe présent>`;
                 else if (g.id === 'g2') { groupName = 'Deuxième groupe'; groupPct = '3%'; }
                 else if (g.id === 'g3') { groupName = 'Troisième groupe'; groupPct = '7%'; }
 
-                html += `<li style="list-style-type: none; margin-bottom: 15px;">
+                groupsHtml += `<li style="list-style-type: none; margin-bottom: 15px;">
                     <div class="main-group-header" style="pointer-events: none; user-select: none;">
                         <span>${groupName}</span>
                         <span class="pct-pill">${groupPct}</span>
                     </div>`;
                 
                 if (g.subgroups) {
-                    html += `<ul class="sub-nav" style="list-style: none; padding-left: 15px; margin: 0;">`;
+                    groupsHtml += `<ul class="sub-nav" style="list-style: none; padding-left: 15px; margin: 0;">`;
                     g.subgroups.forEach(sg => {
                         const isRegular = (sg.id === 'g1_1' || sg.id === 'g2_1' || sg.id === 'g3_1');
                         const linkClass = isRegular ? 'nav-link regular-group-link' : 'nav-link irregular-group-link';
                         
-                        html += `
+                        groupsHtml += `
                             <li style="list-style-type: none; margin-bottom: 5px;">
                                 <a class="${linkClass}" style="pointer-events: none; user-select: none;">
                                     <span class="group-title">${formatSubgroupName(sg.name)}</span>
@@ -1126,15 +1147,16 @@ PRPA: <phrase d'exemple au participe présent>`;
                             </li>
                         `;
                     });
-                    html += `</ul>`;
+                    groupsHtml += `</ul>`;
                 }
-                html += `</li>`;
+                groupsHtml += `</li>`;
             });
-            html += `</ul>`;
+            groupsHtml += `</ul>`;
 
-            // Render "Conjugaisons des verbes français" section second
-            html += `<h2 class="mobile-section-title">Conjugaisons des verbes français</h2>`;
-            html += `<div style="font-size: 0.85em; color: #ffffff; margin-top: -10px; margin-bottom: 20px; line-height: 1.4; opacity: 0.85;">Les verbes français sont basés sur trois tableaux de conjugaison :</div>`;
+            // 2. Conjugaisons section
+            let conjugationsHtml = `<h2 class="mobile-section-title" style="margin-top: 0;">Conjugaisons des verbes français</h2>
+            <div style="font-size: 0.85em; color: #ffffff; margin-top: -10px; margin-bottom: 20px; line-height: 1.4; opacity: 0.85;">Les verbes français sont basés sur trois tableaux de conjugaison :</div>`;
+            
             regularGroups.forEach(g => {
                 let cleanTitle = g.title;
                 if (cleanTitle.includes('-er')) {
@@ -1144,7 +1166,7 @@ PRPA: <phrase d'exemple au participe présent>`;
                 } else if (cleanTitle.includes('-re')) {
                     cleanTitle = '<span style="color: #90caf9;">verbes réguliers en</span> <span class="highlight-unique">-re</span>';
                 }
-                html += `<div class="mobile-group-card">
+                conjugationsHtml += `<div class="mobile-group-card">
                     <div class="mobile-group-header" style="color: #90caf9;">${cleanTitle}</div>`;
                 
                 tensesOrder.forEach(t => {
@@ -1153,10 +1175,9 @@ PRPA: <phrase d'exemple au participe présent>`;
                         const fullName = tenseNames[t] || '';
                         let val = info.val;
                         if (t === 'PRPE') {
-                            // Wrap in span with same font/styling rules as the rest
                             val = val.replace('ai ', '<span class="suffix" style="font-size: 1em;">ai/suis</span> ');
                         }
-                        html += `
+                        conjugationsHtml += `
                             <div class="mobile-tense-row">
                                 <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; background-color: rgba(187, 134, 252, 0.06); padding: 8px 12px; border-radius: 6px; box-sizing: border-box;">
                                     <span class="mobile-tense-name" style="margin-bottom: 0;">${t}</span>
@@ -1168,10 +1189,29 @@ PRPA: <phrase d'exemple au participe présent>`;
                     }
                 });
                 
-                html += `</div>`;
+                conjugationsHtml += `</div>`;
             });
 
+            // Combine sections with menu toggle controls
+            html += `
+                <div class="mobile-menu" style="display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 12px;">
+                    <button id="btn-mobile-groups" onclick="switchMobileTab('groups')" style="flex: 1; border: none; padding: 10px 6px; font-size: 0.9em; font-weight: bold; border-radius: 4px; cursor: pointer; transition: all 0.2s;">groupes de verbes</button>
+                    <button id="btn-mobile-conjugations" onclick="switchMobileTab('conjugations')" style="flex: 1; border: none; padding: 10px 6px; font-size: 0.9em; font-weight: bold; border-radius: 4px; cursor: pointer; transition: all 0.2s;">conjugaisons<br>-er -ir -re</button>
+                </div>
+                
+                <div id="mobile-section-groups" style="display: block;">
+                    ${groupsHtml}
+                </div>
+                
+                <div id="mobile-section-conjugations" style="display: none;">
+                    ${conjugationsHtml}
+                </div>
+            `;
+
             container.innerHTML = html;
+            
+            // Set initial active state styles
+            window.switchMobileTab('groups');
         }
 
         document.addEventListener('mouseover', (e) => {
