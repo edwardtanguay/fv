@@ -176,7 +176,7 @@ body {
             color: #fff;
         }
         .reg {
-            color: #ffffff;
+            color: #90caf9 !important; /* blue */
         }
         .irreg {
             color: #cc7777;
@@ -185,10 +185,10 @@ body {
             color: #cc7777; /* Softer, closer to gray */
         }
         .reg-part {
-            color: #ffffff;
+            color: #90caf9 !important; /* blue */
         }
         .suffix {
-            color: #bbbbbb;
+            color: rgba(144, 202, 249, 0.7) !important; /* blue with opacity */
         }
         .card {
             background-color: #1e1e1e;
@@ -712,4 +712,9 @@ body {
 /* Make conjugation endings blue on the welcome/overview page */
 .overview-tables-container .base-rule-text {
     color: #90caf9 !important;
+}
+
+/* Make base-rule texts on active verb pages blue with opacity */
+#active-verb-conjugation .base-rule-text {
+    color: rgba(144, 202, 249, 0.7) !important;
 }
