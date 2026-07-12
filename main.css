@@ -250,6 +250,7 @@ body {
         .highlight-unique {
             color: #fdd835; /* Yellow */
             font-weight: bold;
+            white-space: nowrap !important; /* Keep endings like -er, -ir, -re intact when wrapping */
         }
         .verb-tab-btn:hover {
             color: #fdd835 !important;
