@@ -529,6 +529,42 @@ const data = {"groups":[{"id":"g1","name":"<span class='group-num main-num'>1.</
                     });
                 }
             });
+
+            // Sidebar resizer drag logic
+            const resizer = document.getElementById('sidebar-resizer');
+            const sidebar = document.querySelector('.sidebar');
+            if (resizer && sidebar) {
+                const savedWidth = localStorage.getItem('sidebar-width');
+                if (savedWidth) {
+                    sidebar.style.width = savedWidth + 'px';
+                }
+                resizer.addEventListener('mousedown', (e) => {
+                    e.preventDefault();
+                    resizer.classList.add('resizing');
+                    document.body.style.cursor = 'col-resize';
+                    document.body.style.userSelect = 'none';
+                    
+                    const doDrag = (moveEvent) => {
+                        let newWidth = moveEvent.clientX;
+                        if (newWidth < 130) newWidth = 130;
+                        if (newWidth > 600) newWidth = 600;
+                        sidebar.style.width = newWidth + 'px';
+                        localStorage.setItem('sidebar-width', newWidth);
+                    };
+                    
+                    const stopDrag = () => {
+                        resizer.classList.remove('resizing');
+                        document.body.style.cursor = '';
+                        document.body.style.userSelect = '';
+                        document.removeEventListener('mousemove', doDrag);
+                        document.removeEventListener('mouseup', stopDrag);
+                    };
+                    
+                    document.addEventListener('mousemove', doDrag);
+                    document.addEventListener('mouseup', stopDrag);
+                });
+            }
+
             renderNav();
             renderWelcomePage();
             renderMobileView();

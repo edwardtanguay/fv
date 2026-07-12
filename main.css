@@ -18,7 +18,7 @@ body {
         }
         .sidebar {
             width: 440px;
-            min-width: 440px;
+            min-width: 130px;
             flex-shrink: 0;
             background-color: #1e1e1e;
             border-right: 1px solid #333;
@@ -662,4 +662,20 @@ body {
     padding: 1px 0 !important;
     border-radius: 1px;
     font-weight: normal;
+}
+
+/* Sidebar Resize Handle */
+.resizer {
+    width: 6px;
+    cursor: col-resize;
+    background-color: rgba(255, 255, 255, 0.05);
+    position: relative;
+    z-index: 100;
+    transition: background-color 0.15s;
+    flex-shrink: 0;
+    height: 100%;
+}
+.resizer:hover,
+.resizer.resizing {
+    background-color: #90caf9 !important; /* Accent blue hover */
 }
