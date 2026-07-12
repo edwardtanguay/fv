@@ -1045,38 +1045,9 @@ PRPA: <phrase d'exemple au participe présent>`;
                     <div class="mobile-subtitle">(see more projects by <a href="https://tanguay.info" target="_blank" rel="noopener noreferrer" style="color: #64b5f6; text-decoration: underline; font-weight: 600;">Edward</a>)</div>
                     <div class="mobile-note">pour profiter de toutes les fonctionnalités de cette application, utilisez un ordinateur</div>
                 </div>
-                
-                <h2 class="mobile-section-title">Conjugaisons des verbes français</h2>
             `;
 
-            regularGroups.forEach(g => {
-                html += `<div class="mobile-group-card">
-                    <div class="mobile-group-header">${g.title}</div>`;
-                
-                tensesOrder.forEach(t => {
-                    const info = g.suffixes[t];
-                    if (info) {
-                        const fullName = tenseNames[t] || '';
-                        let val = info.val;
-                        if (t === 'PRPE') {
-                            // Wrap in span with same font/styling rules as the rest
-                            val = val.replace('ai ', '<span class="suffix" style="font-size: 1em;">ai/suis</span> ');
-                        }
-                        html += `
-                            <div class="mobile-tense-row">
-                                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; background-color: rgba(187, 134, 252, 0.06); padding: 8px 12px; border-radius: 6px; box-sizing: border-box;">
-                                    <span class="mobile-tense-name" style="margin-bottom: 0;">${t}</span>
-                                    <span style="color: #bb86fc; font-size: 0.85em; font-weight: normal; font-style: italic; text-transform: lowercase;">${fullName}</span>
-                                </div>
-                                <span class="mobile-tense-val" style="padding-left: 12px; padding-right: 12px;">${val}</span>
-                            </div>
-                        `;
-                    }
-                });
-                
-                html += `</div>`;
-            });
-
+            // Render "Groupes de verbes français" section first
             html += `<h2 class="mobile-section-title">Groupes de verbes français</h2>`;
             html += `<ul class="mobile-nav-list" style="list-style: none; padding: 0; margin: 0 0 40px 0;">`;
 
@@ -1112,6 +1083,45 @@ PRPA: <phrase d'exemple au participe présent>`;
                 html += `</li>`;
             });
             html += `</ul>`;
+
+            // Render "Conjugaisons des verbes français" section second
+            html += `<h2 class="mobile-section-title">Conjugaisons des verbes français</h2>`;
+            html += `<div style="font-size: 0.85em; color: #ffffff; margin-top: -10px; margin-bottom: 20px; line-height: 1.4; opacity: 0.85;">Les verbes français sont basés sur trois tableaux de conjugaison :</div>`;
+            regularGroups.forEach(g => {
+                let cleanTitle = g.title;
+                if (cleanTitle.includes('-er')) {
+                    cleanTitle = '<span style="color: #90caf9;">verbes réguliers en</span> <span class="highlight-unique">-er</span>';
+                } else if (cleanTitle.includes('-ir')) {
+                    cleanTitle = '<span style="color: #90caf9;">verbes réguliers en</span> <span class="highlight-unique">-ir</span>';
+                } else if (cleanTitle.includes('-re')) {
+                    cleanTitle = '<span style="color: #90caf9;">verbes réguliers en</span> <span class="highlight-unique">-re</span>';
+                }
+                html += `<div class="mobile-group-card">
+                    <div class="mobile-group-header" style="color: #90caf9;">${cleanTitle}</div>`;
+                
+                tensesOrder.forEach(t => {
+                    const info = g.suffixes[t];
+                    if (info) {
+                        const fullName = tenseNames[t] || '';
+                        let val = info.val;
+                        if (t === 'PRPE') {
+                            // Wrap in span with same font/styling rules as the rest
+                            val = val.replace('ai ', '<span class="suffix" style="font-size: 1em;">ai/suis</span> ');
+                        }
+                        html += `
+                            <div class="mobile-tense-row">
+                                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; background-color: rgba(187, 134, 252, 0.06); padding: 8px 12px; border-radius: 6px; box-sizing: border-box;">
+                                    <span class="mobile-tense-name" style="margin-bottom: 0;">${t}</span>
+                                    <span style="color: #bb86fc; font-size: 0.85em; font-weight: normal; font-style: italic; text-transform: lowercase;">${fullName}</span>
+                                </div>
+                                <span class="mobile-tense-val" style="padding-left: 12px; padding-right: 12px;">${val}</span>
+                            </div>
+                        `;
+                    }
+                });
+                
+                html += `</div>`;
+            });
 
             container.innerHTML = html;
         }
