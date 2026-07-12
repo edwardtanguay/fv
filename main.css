@@ -434,7 +434,7 @@ body {
             opacity: 1;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start !important; /* Top-align both title text and percentage pill */
             padding: 12px 8px 6px 8px;
             font-size: 1.05em;
             font-weight: bold;
