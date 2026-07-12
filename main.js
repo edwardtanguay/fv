@@ -534,10 +534,6 @@ const data = {"groups":[{"id":"g1","name":"<span class='group-num main-num'>1.</
             const resizer = document.getElementById('sidebar-resizer');
             const sidebar = document.querySelector('.sidebar');
             if (resizer && sidebar) {
-                const savedWidth = localStorage.getItem('sidebar-width');
-                if (savedWidth) {
-                    sidebar.style.width = savedWidth + 'px';
-                }
                 resizer.addEventListener('mousedown', (e) => {
                     e.preventDefault();
                     resizer.classList.add('resizing');
@@ -566,6 +562,19 @@ const data = {"groups":[{"id":"g1","name":"<span class='group-num main-num'>1.</
             }
 
             renderNav();
+            // Calculate natural fit width dynamically so no sidebar lines wrap by default
+            if (sidebar) {
+                sidebar.style.width = 'max-content';
+                let maxLinkWidth = 0;
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    const w = link.scrollWidth;
+                    if (w > maxLinkWidth) maxLinkWidth = w;
+                });
+                // Sidebar has 20px padding left + 20px padding right. We add 25px scrollbar/border cushion
+                const fitWidth = Math.max(130, maxLinkWidth + 65);
+                sidebar.style.width = fitWidth + 'px';
+            }
+
             renderWelcomePage();
             renderMobileView();
             document.getElementById('sidebar-title').onclick = (e) => {
