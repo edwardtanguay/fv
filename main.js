@@ -1093,6 +1093,7 @@ PRPA: <phrase d'exemple au participe présent>`;
                 btnGroups.style.cssText = 'flex: 1; border: none; padding: 10px 2px; font-size: 0.85em; font-weight: normal; border-radius: 4px; cursor: pointer; transition: all 0.2s; ' + inactiveStyle;
                 btnConj.style.cssText = 'flex: 1; border: none; padding: 10px 2px; font-size: 0.85em; font-weight: normal; border-radius: 4px; cursor: pointer; transition: all 0.2s; ' + activeStyle;
             }
+            try { localStorage.setItem('mobileActiveTab', tab); } catch (e) {}
         };
 
 window.switchMobileSubcard = function(group) {
@@ -1114,6 +1115,7 @@ window.switchMobileSubcard = function(group) {
             btnEr.style.cssText = 'flex: 1; border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s; ' + (group === 'er' ? activeStyle : inactiveStyle);
             btnIr.style.cssText = 'flex: 1; border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s; ' + (group === 'ir' ? activeStyle : inactiveStyle);
             btnRe.style.cssText = 'flex: 1; border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s; ' + (group === 're' ? activeStyle : inactiveStyle);
+            try { localStorage.setItem('mobileActiveSubcard', group); } catch (e) {}
 
             // Dynamically show a new random verb for the selected group (over 30 verbs each)
             const erVerbs = ['aimer', 'adorer', 'chanter', 'danser', 'donner', 'regarder', 'écouter', 'travailler', 'habiter', 'chercher', 'trouver', 'penser', 'demander', 'passer', 'arriver', 'étudier', 'jouer', 'porter', 'monter', 'rester', 'tomber', 'fermer', 'marcher', 'laisser', 'préparer', 'visiter', 'dessiner', 'voyager', 'saluer', 'pleurer', 'sauter', 'laver'];
@@ -1277,9 +1279,15 @@ window.switchMobileSubcard = function(group) {
 
             container.innerHTML = html;
             
-            // Set initial active state styles
-            window.switchMobileTab('groups');
-            window.switchMobileSubcard('er');
+            // Set initial active state styles from localStorage or fallback defaults
+            let initialTab = 'groups';
+            let initialSubcard = 'er';
+            try {
+                initialTab = localStorage.getItem('mobileActiveTab') || 'groups';
+                initialSubcard = localStorage.getItem('mobileActiveSubcard') || 'er';
+            } catch (e) {}
+            window.switchMobileTab(initialTab);
+            window.switchMobileSubcard(initialSubcard);
         }
 
         document.addEventListener('mouseover', (e) => {
