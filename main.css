@@ -718,3 +718,11 @@ body {
 #active-verb-conjugation .base-rule-text {
     color: rgba(144, 202, 249, 0.7) !important;
 }
+
+/* Make blue text italic and normal weight inside mobile cards to remove bolding on iss */
+.mobile-group-card .reg,
+.mobile-group-card .reg-part,
+.mobile-group-card .suffix {
+    font-style: italic !important;
+    font-weight: normal !important;
+}
