@@ -1116,6 +1116,15 @@ window.switchMobileSubcard = function(group) {
             btnRe.style.cssText = 'flex: 1; border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s; ' + (group === 're' ? activeStyle : inactiveStyle);
         };
 
+        window.toggleMobileTenseNames = function() {
+            const spans = document.querySelectorAll('.mobile-tense-fullname');
+            if (spans.length === 0) return;
+            const isHidden = (spans[0].style.display === 'none' || spans[0].style.display === '');
+            spans.forEach(span => {
+                span.style.display = isHidden ? 'inline' : 'none';
+            });
+        };
+
         function renderMobileView() {
             const container = document.getElementById('mobile-view');
             if (!container) return;
@@ -1202,9 +1211,9 @@ window.switchMobileSubcard = function(group) {
                         }
                         conjugationsHtml += `
                             <div class="mobile-tense-row" style="display: flex; flex-direction: column; gap: 3px; margin-bottom: 8px; padding: 0;">
-                                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; background-color: rgba(187, 134, 252, 0.06); padding: 4px 8px; border-radius: 4px; box-sizing: border-box;">
+                                <div onclick="window.toggleMobileTenseNames()" style="display: flex; justify-content: space-between; align-items: center; width: 100%; background-color: rgba(187, 134, 252, 0.06); padding: 4px 8px; border-radius: 4px; box-sizing: border-box; cursor: pointer; user-select: none;">
                                     <span class="mobile-tense-name" style="margin-bottom: 0; font-weight: bold; color: #bb86fc; font-size: 0.8em; text-transform: uppercase;">${t}</span>
-                                    <span style="color: #bb86fc; font-size: 0.8em; font-weight: normal; font-style: normal; text-transform: lowercase;">${fullName}</span>
+                                    <span class="mobile-tense-fullname" style="color: #bb86fc; font-size: 0.8em; font-weight: normal; font-style: normal; text-transform: lowercase; display: none;">${fullName}</span>
                                 </div>
                                 <span class="mobile-tense-val" style="padding-left: 8px; padding-right: 8px; color: #ffffff; font-size: 0.9em; line-height: 1.3;">${val}</span>
                             </div>
