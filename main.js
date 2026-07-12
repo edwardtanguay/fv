@@ -1095,6 +1095,27 @@ PRPA: <phrase d'exemple au participe présent>`;
             }
         };
 
+window.switchMobileSubcard = function(group) {
+            const cardEr = document.getElementById('mobile-card-er');
+            const cardIr = document.getElementById('mobile-card-ir');
+            const cardRe = document.getElementById('mobile-card-re');
+            const btnEr = document.getElementById('btn-mobile-card-er');
+            const btnIr = document.getElementById('btn-mobile-card-ir');
+            const btnRe = document.getElementById('btn-mobile-card-re');
+            if (!cardEr || !cardIr || !cardRe || !btnEr || !btnIr || !btnRe) return;
+
+            const activeStyle = 'background-color: rgba(253, 216, 53, 0.12); color: #fdd835; border: 1px solid #fdd835;';
+            const inactiveStyle = 'background-color: rgba(255, 255, 255, 0.05); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2);';
+
+            cardEr.style.display = group === 'er' ? 'block' : 'none';
+            cardIr.style.display = group === 'ir' ? 'block' : 'none';
+            cardRe.style.display = group === 're' ? 'block' : 'none';
+
+            btnEr.style.cssText = 'border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s; ' + (group === 'er' ? activeStyle : inactiveStyle);
+            btnIr.style.cssText = 'border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s; ' + (group === 'ir' ? activeStyle : inactiveStyle);
+            btnRe.style.cssText = 'border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s; ' + (group === 're' ? activeStyle : inactiveStyle);
+        };
+
         function renderMobileView() {
             const container = document.getElementById('mobile-view');
             if (!container) return;
@@ -1154,19 +1175,22 @@ PRPA: <phrase d'exemple au participe présent>`;
             groupsHtml += `</ul>`;
 
             // 2. Conjugaisons section
-            let conjugationsHtml = '';
+            let conjugationsHtml = `
+                <div style="font-size: 1.1em; font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #90caf9;">verbes réguliers en</span>
+                    <button id="btn-mobile-card-er" onclick="switchMobileSubcard('er')" style="border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s;">-er</button>
+                    <button id="btn-mobile-card-ir" onclick="switchMobileSubcard('ir')" style="border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s;">-ir</button>
+                    <button id="btn-mobile-card-re" onclick="switchMobileSubcard('re')" style="border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s;">-re</button>
+                </div>
+            `;
             
             regularGroups.forEach(g => {
-                let cleanTitle = g.title;
-                if (cleanTitle.includes('-er')) {
-                    cleanTitle = '<span style="color: #90caf9;">verbes réguliers en</span> <span class="highlight-unique">-er</span>';
-                } else if (cleanTitle.includes('-ir')) {
-                    cleanTitle = '<span style="color: #90caf9;">verbes réguliers en</span> <span class="highlight-unique">-ir</span>';
-                } else if (cleanTitle.includes('-re')) {
-                    cleanTitle = '<span style="color: #90caf9;">verbes réguliers en</span> <span class="highlight-unique">-re</span>';
-                }
-                conjugationsHtml += `<div class="mobile-group-card">
-                    <div class="mobile-group-header" style="color: #90caf9;">${cleanTitle}</div>`;
+                let suffixId = '';
+                if (g.title.includes('-er')) suffixId = 'er';
+                else if (g.title.includes('-ir')) suffixId = 'ir';
+                else if (g.title.includes('-re')) suffixId = 're';
+
+                conjugationsHtml += `<div id="mobile-card-${suffixId}" class="mobile-group-card" style="display: ${suffixId === 'er' ? 'block' : 'none'};">`;
                 
                 tensesOrder.forEach(t => {
                     const info = g.suffixes[t];
@@ -1211,6 +1235,7 @@ PRPA: <phrase d'exemple au participe présent>`;
             
             // Set initial active state styles
             window.switchMobileTab('groups');
+            window.switchMobileSubcard('er');
         }
 
         document.addEventListener('mouseover', (e) => {
