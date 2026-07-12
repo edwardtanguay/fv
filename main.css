@@ -369,17 +369,17 @@ body {
             .mobile-group-card {
                 background-color: #1e1e1e;
                 border-radius: 8px;
-                padding: 16px;
-                margin-bottom: 16px;
+                padding: 8px 12px;
+                margin-bottom: 10px;
                 box-shadow: 0 2px 4px rgba(0,0,0,0.2);
             }
             .mobile-group-header {
-                font-size: 1.15em;
+                font-size: 1.1em;
                 font-weight: bold;
                 color: #fdd835;
-                margin-bottom: 12px;
+                margin-bottom: 6px;
                 border-bottom: 1px dashed #444;
-                padding-bottom: 6px;
+                padding-bottom: 4px;
             }
             .mobile-tense-row {
                 padding: 6px 0;

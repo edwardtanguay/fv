@@ -1154,7 +1154,7 @@ PRPA: <phrase d'exemple au participe présent>`;
             groupsHtml += `</ul>`;
 
             // 2. Conjugaisons section
-            let conjugationsHtml = `<div style="font-size: 0.85em; color: #ffffff; margin-top: 0; margin-bottom: 20px; line-height: 1.4; opacity: 0.85;">Les verbes français sont basés sur 3 tableaux de conjugaison :</div>`;
+            let conjugationsHtml = '';
             
             regularGroups.forEach(g => {
                 let cleanTitle = g.title;
@@ -1177,12 +1177,12 @@ PRPA: <phrase d'exemple au participe présent>`;
                             val = val.replace('ai ', '<span class="suffix" style="font-size: 1em;">ai/suis</span> ');
                         }
                         conjugationsHtml += `
-                            <div class="mobile-tense-row">
-                                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; background-color: rgba(187, 134, 252, 0.06); padding: 8px 12px; border-radius: 6px; box-sizing: border-box;">
-                                    <span class="mobile-tense-name" style="margin-bottom: 0;">${t}</span>
-                                    <span style="color: #bb86fc; font-size: 0.85em; font-weight: normal; font-style: italic; text-transform: lowercase;">${fullName}</span>
+                            <div class="mobile-tense-row" style="display: flex; flex-direction: column; gap: 3px; margin-bottom: 8px; padding: 0;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; background-color: rgba(187, 134, 252, 0.06); padding: 4px 8px; border-radius: 4px; box-sizing: border-box;">
+                                    <span class="mobile-tense-name" style="margin-bottom: 0; font-weight: bold; color: #bb86fc; font-size: 0.8em; text-transform: uppercase;">${t}</span>
+                                    <span style="color: #bb86fc; font-size: 0.8em; font-weight: normal; font-style: italic; text-transform: lowercase;">${fullName}</span>
                                 </div>
-                                <span class="mobile-tense-val" style="padding-left: 12px; padding-right: 12px;">${val}</span>
+                                <span class="mobile-tense-val" style="padding-left: 8px; padding-right: 8px; color: #ffffff; font-size: 0.9em; line-height: 1.3;">${val}</span>
                             </div>
                         `;
                     }
