@@ -1079,19 +1079,19 @@ PRPA: <phrase d'exemple au participe présent>`;
             const btnConj = document.getElementById('btn-mobile-conjugations');
             if (!groupsDiv || !conjDiv || !btnGroups || !btnConj) return;
 
-            const activeStyle = 'background-color: rgba(253, 216, 53, 0.12); color: #fdd835; border: 1px solid #fdd835;';
-            const inactiveStyle = 'background-color: rgba(255, 255, 255, 0.05); color: #bbbbbb; border: 1px solid transparent;';
+            const activeStyle = 'background-color: rgba(255, 255, 255, 0.18); color: #ffffff; border: 1px solid #ffffff;';
+            const inactiveStyle = 'background-color: rgba(255, 255, 255, 0.05); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2);';
 
             if (tab === 'groups') {
                 groupsDiv.style.display = 'block';
                 conjDiv.style.display = 'none';
-                btnGroups.style.cssText = 'flex: 1; border: none; padding: 10px 6px; font-size: 0.9em; font-weight: bold; border-radius: 4px; cursor: pointer; transition: all 0.2s; ' + activeStyle;
-                btnConj.style.cssText = 'flex: 1; border: none; padding: 10px 6px; font-size: 0.9em; font-weight: bold; border-radius: 4px; cursor: pointer; transition: all 0.2s; ' + inactiveStyle;
+                btnGroups.style.cssText = 'flex: 1; border: none; padding: 10px 2px; font-size: 0.85em; font-weight: normal; border-radius: 4px; cursor: pointer; transition: all 0.2s; ' + activeStyle;
+                btnConj.style.cssText = 'flex: 1; border: none; padding: 10px 2px; font-size: 0.85em; font-weight: normal; border-radius: 4px; cursor: pointer; transition: all 0.2s; ' + inactiveStyle;
             } else {
                 groupsDiv.style.display = 'none';
                 conjDiv.style.display = 'block';
-                btnGroups.style.cssText = 'flex: 1; border: none; padding: 10px 6px; font-size: 0.9em; font-weight: bold; border-radius: 4px; cursor: pointer; transition: all 0.2s; ' + inactiveStyle;
-                btnConj.style.cssText = 'flex: 1; border: none; padding: 10px 6px; font-size: 0.9em; font-weight: bold; border-radius: 4px; cursor: pointer; transition: all 0.2s; ' + activeStyle;
+                btnGroups.style.cssText = 'flex: 1; border: none; padding: 10px 2px; font-size: 0.85em; font-weight: normal; border-radius: 4px; cursor: pointer; transition: all 0.2s; ' + inactiveStyle;
+                btnConj.style.cssText = 'flex: 1; border: none; padding: 10px 2px; font-size: 0.85em; font-weight: normal; border-radius: 4px; cursor: pointer; transition: all 0.2s; ' + activeStyle;
             }
         };
 
@@ -1195,8 +1195,8 @@ PRPA: <phrase d'exemple au participe présent>`;
             // Combine sections with menu toggle controls
             html += `
                 <div class="mobile-menu" style="display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 12px;">
-                    <button id="btn-mobile-groups" onclick="switchMobileTab('groups')" style="flex: 1; border: none; padding: 10px 6px; font-size: 0.9em; font-weight: bold; border-radius: 4px; cursor: pointer; transition: all 0.2s;">groupes de verbes</button>
-                    <button id="btn-mobile-conjugations" onclick="switchMobileTab('conjugations')" style="flex: 1; border: none; padding: 10px 6px; font-size: 0.9em; font-weight: bold; border-radius: 4px; cursor: pointer; transition: all 0.2s;">conjugaisons<br>-er -ir -re</button>
+                    <button id="btn-mobile-groups" onclick="switchMobileTab('groups')" style="flex: 1; border: none; padding: 10px 2px; font-size: 0.85em; font-weight: normal; border-radius: 4px; cursor: pointer; transition: all 0.2s;">groupes de verbes</button>
+                    <button id="btn-mobile-conjugations" onclick="switchMobileTab('conjugations')" style="flex: 1; border: none; padding: 10px 2px; font-size: 0.85em; font-weight: normal; border-radius: 4px; cursor: pointer; transition: all 0.2s;">conjugaisons -er -ir -re</button>
                 </div>
                 
                 <div id="mobile-section-groups" style="display: block;">
