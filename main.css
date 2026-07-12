@@ -708,3 +708,8 @@ body {
     white-space: normal !important;
     word-wrap: break-word !important;
 }
+
+/* Make conjugation endings blue on the welcome/overview page */
+.overview-tables-container .base-rule-text {
+    color: #90caf9 !important;
+}
