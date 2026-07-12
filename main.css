@@ -177,6 +177,8 @@ body {
         }
         .reg {
             color: #90caf9 !important; /* blue */
+            font-weight: normal !important;
+            letter-spacing: 0.03em !important;
         }
         .irreg {
             color: #cc7777;
@@ -186,9 +188,13 @@ body {
         }
         .reg-part {
             color: #90caf9 !important; /* blue */
+            font-weight: normal !important;
+            letter-spacing: 0.03em !important;
         }
         .suffix {
-            color: rgba(144, 202, 249, 0.7) !important; /* blue with opacity */
+            color: #90caf9 !important; /* blue */
+            font-weight: normal !important;
+            letter-spacing: 0.03em !important;
         }
         .card {
             background-color: #1e1e1e;
@@ -719,10 +725,11 @@ body {
     color: rgba(144, 202, 249, 0.7) !important;
 }
 
-/* Make blue text italic and normal weight inside mobile cards to remove bolding on iss */
+/* Make blue text italic and normal weight inside mobile cards */
 .mobile-group-card .reg,
 .mobile-group-card .reg-part,
 .mobile-group-card .suffix {
     font-style: italic !important;
     font-weight: normal !important;
+    letter-spacing: 0.03em !important;
 }
