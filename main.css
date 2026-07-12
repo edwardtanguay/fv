@@ -576,20 +576,20 @@ body {
     margin-bottom: clamp(6px, 1.5vh, 15px) !important;
 }
 .subgroup-header-container h2 {
-    font-size: clamp(12px, 2.2vh, 22px) !important;
+    font-size: clamp(12px, 1.8vh + 0.5vw, 30px) !important;
     margin: 0 !important;
 }
 
 .subgroup-description {
     padding: clamp(6px, 1vh, 12px) clamp(8px, 1.3vh, 15px) !important;
     margin-bottom: clamp(6px, 1.5vh, 15px) !important;
-    font-size: clamp(9px, 1.5vh, 14px) !important;
+    font-size: clamp(9px, 1.2vh + 0.35vw, 20px) !important;
 }
 
 .prompt-instructions {
     margin-top: clamp(4px, 0.8vh, 10px) !important;
     margin-bottom: clamp(4px, 0.8vh, 10px) !important;
-    font-size: clamp(8px, 1.4vh, 13px) !important;
+    font-size: clamp(8px, 1.1vh + 0.3vw, 18px) !important;
     gap: clamp(2px, 0.5vh, 6px) !important;
 }
 .prompt-instructions img,
@@ -601,19 +601,19 @@ body {
 .similar-verbs-title {
     margin-top: clamp(8px, 1.5vh, 20px) !important;
     margin-bottom: clamp(4px, 0.8vh, 10px) !important;
-    font-size: clamp(10px, 1.7vh, 15px) !important;
+    font-size: clamp(10px, 1.3vh + 0.35vw, 20px) !important;
 }
 
 /* Fluid dynamic scaling for tabs, icons, and list of verbs at the bottom */
 .verb-tab-btn {
-    font-size: clamp(9px, 1.6vh, 15px) !important;
+    font-size: clamp(9px, 1.2vh + 0.35vw, 20px) !important;
     padding: clamp(4px, 0.8vh, 8px) clamp(8px, 1.5vh, 16px) !important;
 }
 
 .help-icon {
-    width: clamp(16px, 2.2vh, 24px) !important;
-    height: clamp(16px, 2.2vh, 24px) !important;
-    font-size: clamp(9px, 1.5vh, 13px) !important;
+    width: clamp(16px, 1.8vh + 0.5vw, 30px) !important;
+    height: clamp(16px, 1.8vh + 0.5vw, 30px) !important;
+    font-size: clamp(9px, 1.2vh + 0.3vw, 18px) !important;
 }
 
 .content svg {
@@ -628,7 +628,7 @@ body {
 }
 
 .similar-verb-item {
-    font-size: clamp(9px, 1.5vh, 14px) !important;
+    font-size: clamp(9px, 1.2vh + 0.35vw, 20px) !important;
     padding: clamp(3px, 0.6vh, 6px) clamp(6px, 1vh, 10px) !important;
     gap: clamp(6px, 1.2vh, 12px) !important;
 }
