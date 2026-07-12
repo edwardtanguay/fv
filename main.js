@@ -1091,8 +1091,7 @@ PRPA: <phrase d'exemple au participe présent>`;
             let html = `
                 <div class="mobile-title-container">
                     <h1 class="mobile-title">Verbes Français</h1>
-                    <div class="mobile-subtitle">(see more projects by <a href="https://tanguay.info" target="_blank" rel="noopener noreferrer" style="color: #64b5f6; text-decoration: underline; font-weight: 600;">Edward</a>)</div>
-                    <div class="mobile-note">pour profiter de toutes les fonctionnalités de cette application, utilisez un ordinateur</div>
+                    <div class="mobile-subtitle">(see more projects by <a href="https://tanguay.info" target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: underline; font-weight: 600;">Edward</a>)</div>
                 </div>
             `;
 
