@@ -686,7 +686,7 @@ const data = {"groups":[{"id":"g1","name":"<span class='group-num main-num'>1.</
         }
 
         function copyAIPrompt(verb) {
-            const prompt = `Réponds uniquement dans ce format exact, sans introduction ni conclusion.
+            const prompt = `Réponds uniquement dans ce format exact, sans introduction ni conclusion. Sépare chaque exemple par un saut de ligne afin qu'ils apparaissent chacun sur leur propre ligne (pas de paragraphe groupé).
 Chaque phrase d'exemple doit inclure une expression temporelle naturelle et appropriée au temps utilisé (ex. : "hier", "tous les jours", "demain", "autrefois", "en ce moment", etc.).
 
 ${verb}, v. <définition courte en français> (*<traductions anglaises courtes, ex. : inform, notify, warn>*)
@@ -700,7 +700,9 @@ COND: <phrase d'exemple au conditionnel>
 PRSU: <phrase d'exemple au subjonctif présent>
 IMSU: <phrase d'exemple au subjonctif imparfait>
 IPER: <phrase d'exemple à l'impératif>
-PRPA: <phrase d'exemple au participe présent>`;
+PRPA: <phrase d'exemple au participe présent>
+
+Chaque ligne doit commencer par le code du temps suivi de sa phrase (ex: PRES: ...). Assure-toi de faire un saut de ligne après chaque phrase.`;
             
             navigator.clipboard.writeText(prompt).then(() => {
                 showToast(`Prompt IA copié pour ${verb} !`);
