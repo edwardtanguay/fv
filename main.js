@@ -1045,7 +1045,7 @@ PRPA: <phrase d'exemple au participe présent>`;
 
             content.innerHTML = `
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                    <h2 style="font-size: 1.2em; font-weight: bold; color: #ffffff; margin: 0; padding-right: 10px;">Les verbes français sont basés sur trois tableaux de conjugaison :</h2>
+                    <h2 style="font-size: 1.2em; font-weight: bold; color: #ffffff; margin: 0; padding-right: 10px;">Les verbes français sont basés sur 3 tableaux de conjugaison :</h2>
                     <span class="help-icon" style="cursor: pointer; color: #ffffff; font-size: 1.1em; display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border: 2px solid #ffffff; border-radius: 50%; font-weight: normal; user-select: none; flex-shrink: 0;">?</span>
                 </div>
                 
@@ -1154,8 +1154,7 @@ PRPA: <phrase d'exemple au participe présent>`;
             groupsHtml += `</ul>`;
 
             // 2. Conjugaisons section
-            let conjugationsHtml = `<h2 class="mobile-section-title" style="margin-top: 0;">Conjugaisons des verbes français</h2>
-            <div style="font-size: 0.85em; color: #ffffff; margin-top: -10px; margin-bottom: 20px; line-height: 1.4; opacity: 0.85;">Les verbes français sont basés sur trois tableaux de conjugaison :</div>`;
+            let conjugationsHtml = `<div style="font-size: 0.85em; color: #ffffff; margin-top: 0; margin-bottom: 20px; line-height: 1.4; opacity: 0.85;">Les verbes français sont basés sur 3 tableaux de conjugaison :</div>`;
             
             regularGroups.forEach(g => {
                 let cleanTitle = g.title;
