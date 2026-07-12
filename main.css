@@ -658,8 +658,8 @@ body {
     border-radius: 4px;
 }
 .diff-highlight {
-    background-color: rgba(244, 67, 54, 0.22) !important; /* Subtle translucent red */
-    color: #e57373 !important; /* Soft light red text */
+    background-color: rgba(255, 152, 0, 0.22) !important; /* Subtle translucent orange */
+    color: #ffb74d !important; /* Soft light orange text */
     padding: 1px 0 !important; /* Removed horizontal padding to prevent spacing gaps in words */
     border-radius: 1px;
     font-weight: normal;
