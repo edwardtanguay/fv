@@ -1111,9 +1111,9 @@ window.switchMobileSubcard = function(group) {
             cardIr.style.display = group === 'ir' ? 'block' : 'none';
             cardRe.style.display = group === 're' ? 'block' : 'none';
 
-            btnEr.style.cssText = 'border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s; ' + (group === 'er' ? activeStyle : inactiveStyle);
-            btnIr.style.cssText = 'border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s; ' + (group === 'ir' ? activeStyle : inactiveStyle);
-            btnRe.style.cssText = 'border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s; ' + (group === 're' ? activeStyle : inactiveStyle);
+            btnEr.style.cssText = 'flex: 1; border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s; ' + (group === 'er' ? activeStyle : inactiveStyle);
+            btnIr.style.cssText = 'flex: 1; border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s; ' + (group === 'ir' ? activeStyle : inactiveStyle);
+            btnRe.style.cssText = 'flex: 1; border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s; ' + (group === 're' ? activeStyle : inactiveStyle);
         };
 
         function renderMobileView() {
@@ -1177,10 +1177,10 @@ window.switchMobileSubcard = function(group) {
             // 2. Conjugaisons section
             let conjugationsHtml = `
                 <div style="font-size: 1.1em; font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
-                    <span style="color: #90caf9;">verbes réguliers en</span>
-                    <button id="btn-mobile-card-er" onclick="switchMobileSubcard('er')" style="border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s;">-er</button>
-                    <button id="btn-mobile-card-ir" onclick="switchMobileSubcard('ir')" style="border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s;">-ir</button>
-                    <button id="btn-mobile-card-re" onclick="switchMobileSubcard('re')" style="border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s;">-re</button>
+                    <span style="color: #90caf9; flex-shrink: 0;">verbes réguliers en</span>
+                    <button id="btn-mobile-card-er" onclick="switchMobileSubcard('er')" style="flex: 1; border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s;">-er</button>
+                    <button id="btn-mobile-card-ir" onclick="switchMobileSubcard('ir')" style="flex: 1; border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s;">-ir</button>
+                    <button id="btn-mobile-card-re" onclick="switchMobileSubcard('re')" style="flex: 1; border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s;">-re</button>
                 </div>
             `;
             
