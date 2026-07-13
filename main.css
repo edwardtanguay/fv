@@ -192,7 +192,7 @@ body {
             letter-spacing: 0.03em !important;
         }
         .suffix {
-            color: #90caf9 !important; /* blue */
+            color: rgba(144, 202, 249, 0.55) !important; /* dimmed blue */
             font-weight: normal !important;
             letter-spacing: 0.03em !important;
         }
@@ -717,12 +717,12 @@ body {
 
 /* Make conjugation endings blue on the welcome/overview page */
 .overview-tables-container .base-rule-text {
-    color: #90caf9 !important;
+    color: rgba(144, 202, 249, 0.55) !important;
 }
 
 /* Make base-rule texts on active verb pages blue with opacity */
 #active-verb-conjugation .base-rule-text {
-    color: rgba(144, 202, 249, 0.7) !important;
+    color: rgba(144, 202, 249, 0.55) !important;
 }
 
 /* Make blue text italic and normal weight inside mobile cards */
