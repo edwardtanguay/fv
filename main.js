@@ -1199,7 +1199,7 @@ window.switchMobileSubcard = function(group) {
                         const linkClass = isRegular ? 'nav-link regular-group-link' : 'nav-link irregular-group-link';
                         
                         groupsHtml += `
-                            <li style="list-style-type: none; margin-bottom: 5px;">
+                            <li style="list-style-type: none; margin-bottom: 10px;">
                                 <a class="${linkClass}" style="pointer-events: none; user-select: none;">
                                     <span class="group-title">${formatSubgroupName(sg.name)}</span>
                                 </a>

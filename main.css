@@ -743,3 +743,35 @@ a,
     -webkit-touch-callout: none !important;
     outline: none !important;
 }
+
+/* Overrides for groups view on smartphones to left-align, enlarge, and prevent line wrapping */
+@media (max-width: 768px) {
+    .main-group-header {
+        justify-content: flex-start !important;
+        gap: 10px !important;
+        font-size: 1.15em !important;
+    }
+    .sub-nav {
+        font-size: 1.05em !important;
+    }
+    .mobile-nav-list .group-title {
+        white-space: nowrap !important;
+    }
+}
+
+/* Remove left indentation on subgroup items in mobile view to align them perfectly with parent headers */
+@media (max-width: 768px) {
+    .mobile-nav-list .sub-nav {
+        padding-left: 0 !important;
+    }
+}
+
+/* Remove left padding on mobile headers and links to align text perfectly flush-left with border dividers */
+@media (max-width: 768px) {
+    .main-group-header {
+        padding-left: 0 !important;
+    }
+    .mobile-nav-list a.nav-link {
+        padding-left: 0 !important;
+    }
+}
