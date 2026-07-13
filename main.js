@@ -1184,14 +1184,14 @@ window.switchMobileSubcard = function(group) {
                 
                 if (subgroup && subgroup.verbs && subgroup.verbs.length > 0) {
                     const verbsToShow = subgroup.verbs.slice(0, 10);
-                    let pillsHtml = `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; box-sizing: border-box; padding: 6px 0;">`;
+                    let pillsHtml = `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-left: -16px; margin-right: -16px; width: calc(100% + 32px); padding: 6px 0; box-sizing: border-box;">`;
                     verbsToShow.forEach(v => {
                         const reverso = `https://conjugator.reverso.net/conjugation-french-verb-${v.name}.html`;
                         const lawless = getLawlessFrenchUrl(v.name);
                         pillsHtml += `
-                            <div style="background-color: rgba(253, 216, 53, 0.08); color: #fdd835; border: 1px solid rgba(253, 216, 53, 0.25); padding: 8px 10px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; gap: 6px; font-size: 0.9em; box-sizing: border-box; user-select: none;">
-                                <span style="font-weight: bold; color: #fdd835; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60px;">${v.name}</span>
-                                <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
+                            <div style="background-color: rgba(253, 216, 53, 0.08); color: #fdd835; border: 1px solid rgba(253, 216, 53, 0.25); padding: 8px 10px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; gap: 4px; font-size: 0.9em; box-sizing: border-box; user-select: none;">
+                                <span style="font-weight: normal; color: #fdd835; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80px;">${v.name}</span>
+                                <div style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
                                     <a href="${lawless}" target="_blank" style="-webkit-tap-highlight-color: transparent !important; display: inline-flex; align-items: center; justify-content: center;"><img src="https://www.lawlessfrench.com/favicon.ico" width="20" height="20" style="border-radius: 4px; display: block;" /></a>
                                     <a href="${reverso}" target="_blank" style="-webkit-tap-highlight-color: transparent !important; display: inline-flex; align-items: center; justify-content: center;"><img src="https://cdn.reverso.net/conj/v2550/IMG/ReversoFavicon.ico" width="20" height="20" style="border-radius: 3px; display: block;" /></a>
                                     <a href="javascript:void(0)" onclick="copyAIPrompt('${v.name}')" style="-webkit-tap-highlight-color: transparent !important; display: inline-flex; align-items: center; justify-content: center;"><svg viewBox="0 0 16 16" width="20" height="20" style="display: block;"><rect x="0" y="0" width="16" height="16" rx="3" fill="#fdd835"/><text x="8" y="8" dominant-baseline="central" text-anchor="middle" font-family="'Inter', 'Outfit', system-ui, sans-serif" font-weight="800" font-size="7.5" fill="#1a1a1a" letter-spacing="0.3px">AI</text></svg></a>
