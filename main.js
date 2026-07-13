@@ -1193,7 +1193,7 @@ window.switchMobileSubcard = function(group) {
                     </div>`;
                 
                 if (g.subgroups) {
-                    groupsHtml += `<ul class="sub-nav" style="list-style: none; padding-left: 15px; margin: 0;">`;
+                    groupsHtml += `<ul class="sub-nav" style="list-style: none; padding-left: 15px; margin: 0; margin-top: 10px;">`;
                     g.subgroups.forEach(sg => {
                         const isRegular = (sg.id === 'g1_1' || sg.id === 'g2_1' || sg.id === 'g3_1');
                         const linkClass = isRegular ? 'nav-link regular-group-link' : 'nav-link irregular-group-link';
