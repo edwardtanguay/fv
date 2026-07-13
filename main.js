@@ -1154,6 +1154,59 @@ window.switchMobileSubcard = function(group) {
             });
         };
 
+        window.toggleMobileSubgroupVerbs = function(subgroupId) {
+            const panel = document.getElementById(`mobile-subgroup-verbs-${subgroupId}`);
+            if (!panel) return;
+            
+            // Toggle visibility
+            if (panel.style.display === 'block') {
+                panel.style.display = 'none';
+                return;
+            }
+            
+            // Close other open panels first for accordion behavior
+            document.querySelectorAll('.mobile-subgroup-verbs-panel').forEach(p => {
+                p.style.display = 'none';
+            });
+            
+            // Generate list if empty
+            if (panel.innerHTML === '') {
+                let subgroup = null;
+                for (const g of data.groups) {
+                    if (g.subgroups) {
+                        const found = g.subgroups.find(sg => sg.id === subgroupId);
+                        if (found) {
+                            subgroup = found;
+                            break;
+                        }
+                    }
+                }
+                
+                if (subgroup && subgroup.verbs && subgroup.verbs.length > 0) {
+                    const verbsToShow = subgroup.verbs.slice(0, 10);
+                    let pillsHtml = `<div style="display: flex; flex-wrap: wrap; gap: 8px; padding: 4px 0; max-width: 100%; box-sizing: border-box;">`;
+                    verbsToShow.forEach(v => {
+                        const reverso = `https://conjugator.reverso.net/conjugation-french-verb-${v.name}.html`;
+                        const lawless = getLawlessFrenchUrl(v.name);
+                        pillsHtml += `
+                            <div style="background-color: #ffffff; color: #1a1a1a; padding: 5px 10px; border-radius: 20px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.85em; box-shadow: 0 1px 3px rgba(0,0,0,0.2); user-select: none;">
+                                <span style="font-weight: bold; color: #1a1a1a; margin-right: 2px;">${v.name}</span>
+                                <a href="${lawless}" target="_blank" style="-webkit-tap-highlight-color: transparent !important; display: inline-flex; align-items: center; justify-content: center;"><img src="https://www.lawlessfrench.com/favicon.ico" width="13" height="13" style="border-radius: 2px;" /></a>
+                                <a href="${reverso}" target="_blank" style="-webkit-tap-highlight-color: transparent !important; display: inline-flex; align-items: center; justify-content: center;"><img src="https://cdn.reverso.net/conj/v2550/IMG/ReversoFavicon.ico" width="13" height="13" style="border-radius: 2px;" /></a>
+                                <a href="javascript:void(0)" onclick="copyAIPrompt('${v.name}')" style="-webkit-tap-highlight-color: transparent !important; display: inline-flex; align-items: center; justify-content: center;"><svg viewBox="0 0 16 16" width="13" height="13"><rect x="0" y="0" width="16" height="16" rx="3" fill="#1a1a1a"/><text x="8" y="8" dominant-baseline="central" text-anchor="middle" font-family="'Inter', 'Outfit', system-ui, sans-serif" font-weight="800" font-size="7.5" fill="#ffffff" letter-spacing="0.3px">AI</text></svg></a>
+                            </div>
+                        `;
+                    });
+                    pillsHtml += `</div>`;
+                    panel.innerHTML = pillsHtml;
+                } else {
+                    panel.innerHTML = '<div style="color: #888; font-size: 0.85em; padding: 4px 0;">Aucun verbe d\'exemple disponible.</div>';
+                }
+            }
+            
+            panel.style.display = 'block';
+        };
+
         function renderMobileView() {
             const container = document.getElementById('mobile-view');
             if (!container) return;
@@ -1200,9 +1253,10 @@ window.switchMobileSubcard = function(group) {
                         
                         groupsHtml += `
                             <li style="list-style-type: none; margin-bottom: 10px;">
-                                <a class="${linkClass}" style="pointer-events: none; user-select: none;">
+                                <a class="${linkClass}" onclick="window.toggleMobileSubgroupVerbs('${sg.id}')" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; width: 100%; box-sizing: border-box;">
                                     <span class="group-title">${formatSubgroupName(sg.name)}</span>
                                 </a>
+                                <div id="mobile-subgroup-verbs-${sg.id}" class="mobile-subgroup-verbs-panel" style="display: none; padding-top: 4px; padding-bottom: 8px;"></div>
                             </li>
                         `;
                     });
