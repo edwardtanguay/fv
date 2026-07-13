@@ -775,3 +775,13 @@ a,
         padding-left: 0 !important;
     }
 }
+
+/* Remove bold weight on subgroup content text, numbers, and highlighted suffix endings in mobile navigation view */
+@media (max-width: 768px) {
+    .mobile-nav-list .group-title,
+    .mobile-nav-list .group-title *,
+    .mobile-nav-list .group-num,
+    .mobile-nav-list .highlight-unique {
+        font-weight: normal !important;
+    }
+}
