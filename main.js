@@ -1184,16 +1184,18 @@ window.switchMobileSubcard = function(group) {
                 
                 if (subgroup && subgroup.verbs && subgroup.verbs.length > 0) {
                     const verbsToShow = subgroup.verbs.slice(0, 10);
-                    let pillsHtml = `<div style="display: flex; flex-wrap: wrap; gap: 8px; padding: 4px 0; max-width: 100%; box-sizing: border-box;">`;
+                    let pillsHtml = `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; box-sizing: border-box; padding: 6px 0;">`;
                     verbsToShow.forEach(v => {
                         const reverso = `https://conjugator.reverso.net/conjugation-french-verb-${v.name}.html`;
                         const lawless = getLawlessFrenchUrl(v.name);
                         pillsHtml += `
-                            <div style="background-color: #ffffff; color: #1a1a1a; padding: 5px 10px; border-radius: 20px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.85em; box-shadow: 0 1px 3px rgba(0,0,0,0.2); user-select: none;">
-                                <span style="font-weight: bold; color: #1a1a1a; margin-right: 2px;">${v.name}</span>
-                                <a href="${lawless}" target="_blank" style="-webkit-tap-highlight-color: transparent !important; display: inline-flex; align-items: center; justify-content: center;"><img src="https://www.lawlessfrench.com/favicon.ico" width="13" height="13" style="border-radius: 2px;" /></a>
-                                <a href="${reverso}" target="_blank" style="-webkit-tap-highlight-color: transparent !important; display: inline-flex; align-items: center; justify-content: center;"><img src="https://cdn.reverso.net/conj/v2550/IMG/ReversoFavicon.ico" width="13" height="13" style="border-radius: 2px;" /></a>
-                                <a href="javascript:void(0)" onclick="copyAIPrompt('${v.name}')" style="-webkit-tap-highlight-color: transparent !important; display: inline-flex; align-items: center; justify-content: center;"><svg viewBox="0 0 16 16" width="13" height="13"><rect x="0" y="0" width="16" height="16" rx="3" fill="#1a1a1a"/><text x="8" y="8" dominant-baseline="central" text-anchor="middle" font-family="'Inter', 'Outfit', system-ui, sans-serif" font-weight="800" font-size="7.5" fill="#ffffff" letter-spacing="0.3px">AI</text></svg></a>
+                            <div style="background-color: rgba(253, 216, 53, 0.08); color: #fdd835; border: 1px solid rgba(253, 216, 53, 0.25); padding: 8px 10px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; gap: 6px; font-size: 0.9em; box-sizing: border-box; user-select: none;">
+                                <span style="font-weight: bold; color: #fdd835; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60px;">${v.name}</span>
+                                <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
+                                    <a href="${lawless}" target="_blank" style="-webkit-tap-highlight-color: transparent !important; display: inline-flex; align-items: center; justify-content: center;"><img src="https://www.lawlessfrench.com/favicon.ico" width="20" height="20" style="border-radius: 4px; display: block;" /></a>
+                                    <a href="${reverso}" target="_blank" style="-webkit-tap-highlight-color: transparent !important; display: inline-flex; align-items: center; justify-content: center;"><img src="https://cdn.reverso.net/conj/v2550/IMG/ReversoFavicon.ico" width="20" height="20" style="border-radius: 3px; display: block;" /></a>
+                                    <a href="javascript:void(0)" onclick="copyAIPrompt('${v.name}')" style="-webkit-tap-highlight-color: transparent !important; display: inline-flex; align-items: center; justify-content: center;"><svg viewBox="0 0 16 16" width="20" height="20" style="display: block;"><rect x="0" y="0" width="16" height="16" rx="3" fill="#fdd835"/><text x="8" y="8" dominant-baseline="central" text-anchor="middle" font-family="'Inter', 'Outfit', system-ui, sans-serif" font-weight="800" font-size="7.5" fill="#1a1a1a" letter-spacing="0.3px">AI</text></svg></a>
+                                </div>
                             </div>
                         `;
                     });
