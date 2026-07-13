@@ -1184,12 +1184,19 @@ window.switchMobileSubcard = function(group) {
                 
                 if (subgroup && subgroup.verbs && subgroup.verbs.length > 0) {
                     const verbsToShow = subgroup.verbs.slice(0, 10);
-                    let pillsHtml = `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-left: -16px; margin-right: -16px; width: calc(100% + 32px); padding: 6px 0; box-sizing: border-box;">`;
+                    const isSingle = verbsToShow.length === 1;
+                    let pillsHtml = '';
+                    if (isSingle) {
+                        pillsHtml = `<div style="display: flex; justify-content: center; width: 100%; box-sizing: border-box; padding: 6px 0;">`;
+                    } else {
+                        pillsHtml = `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-left: -16px; margin-right: -16px; width: calc(100% + 32px); padding: 6px 0; box-sizing: border-box;">`;
+                    }
                     verbsToShow.forEach(v => {
                         const reverso = `https://conjugator.reverso.net/conjugation-french-verb-${v.name}.html`;
                         const lawless = getLawlessFrenchUrl(v.name);
+                        const itemStyle = isSingle ? 'width: calc(50% - 4px);' : '';
                         pillsHtml += `
-                            <div style="background-color: rgba(253, 216, 53, 0.08); color: #fdd835; border: 1px solid rgba(253, 216, 53, 0.25); padding: 8px 10px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; gap: 4px; font-size: 0.9em; box-sizing: border-box; user-select: none;">
+                            <div style="background-color: rgba(253, 216, 53, 0.08); color: #fdd835; border: 1px solid rgba(253, 216, 53, 0.25); padding: 8px 10px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; gap: 4px; font-size: 0.9em; box-sizing: border-box; user-select: none; ${itemStyle}">
                                 <span style="font-weight: normal; color: #fdd835; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80px;">${v.name}</span>
                                 <div style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
                                     <a href="${lawless}" target="_blank" style="-webkit-tap-highlight-color: transparent !important; display: inline-flex; align-items: center; justify-content: center;"><img src="https://www.lawlessfrench.com/favicon.ico" width="20" height="20" style="border-radius: 4px; display: block;" /></a>
