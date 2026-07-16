@@ -958,7 +958,7 @@ Chaque ligne doit commencer par le code du temps suivi de sa phrase (ex: PRES: .
             for (const [tense, info] of Object.entries(conj)) {
                 let val = info.val;
                 val = val.replaceAll(`<span class="reg-part">${stemToReplace}</span>`, `<span class="reg-part">-</span>`);
-                val = val.replaceAll(`<span class="reg-part">${stemToReplace}iss</span>`, `<span class="reg-part">-iss</span>`);
+                val = val.replaceAll(`<span class="reg-part">${stemToReplace}iss</span>`, `<span class="suffix">-iss</span>`);
                 val = val.replaceAll(`<span class="reg-part">${stemToReplace}d</span>`, `<span class="reg-part">-d</span>`);
                 val = val.replaceAll(`<span class="reg-part">${stemToReplace}t</span>`, `<span class="reg-part">-t</span>`);
                 if (patternId === 'g1') {
